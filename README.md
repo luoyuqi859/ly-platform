@@ -1,1 +1,1 @@
-# ly-platform-web
+# ly-platform

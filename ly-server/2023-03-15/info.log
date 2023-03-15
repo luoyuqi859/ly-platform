@@ -1,0 +1,624 @@
+2023/03/15 - 10:44:15.889	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.645ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:15.977	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[17.182ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:15.994	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[16.947ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.001	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.385ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.014	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.771ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.021	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.946ms] [34;1m[rows:-][0m SELECT * FROM `sys_users` LIMIT 1
+
+2023/03/15 - 10:44:16.035	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.551ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_users' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.041	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[4.834ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.053	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.165ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.071	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[18.288ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_deleted_at'
+
+2023/03/15 - 10:44:16.079	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[7.388ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.096	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[16.559ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.110	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.129ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_uuid'
+
+2023/03/15 - 10:44:16.117	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.433ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.135	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[16.487ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.149	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.940ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_username'
+
+2023/03/15 - 10:44:16.156	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.109ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.179	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[21.800ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.196	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[16.559ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.203	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.932ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.218	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.037ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.225	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.924ms] [34;1m[rows:-][0m SELECT * FROM `sys_authorities` LIMIT 1
+
+2023/03/15 - 10:44:16.241	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.477ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.249	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.600ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.264	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.531ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.281	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.834ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.288	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.186ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.304	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.883ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.310	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.512ms] [34;1m[rows:-][0m SELECT * FROM `sys_user_authority` LIMIT 1
+
+2023/03/15 - 10:44:16.324	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.121ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.331	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.083ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.351	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[20.170ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.364	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.636ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.369	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.203ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.388	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[17.760ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.396	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[8.382ms] [34;1m[rows:-][0m SELECT * FROM `sys_base_menus` LIMIT 1
+
+2023/03/15 - 10:44:16.411	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.965ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.439	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[26.535ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `active_name` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.490	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[50.601ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `keep_alive` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.515	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[24.232ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `default_menu` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.541	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[25.455ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `title` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.573	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[31.200ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `icon` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.601	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[27.459ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `close_tab` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:44:16.607	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.581ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.620	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.261ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.633	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.520ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND index_name = 'idx_sys_base_menus_deleted_at'
+
+2023/03/15 - 10:44:16.641	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[7.091ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.655	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.513ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.673	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[17.747ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.681	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[7.186ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.697	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.719ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.710	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.211ms] [34;1m[rows:-][0m SELECT * FROM `sys_authority_menus` LIMIT 1
+
+2023/03/15 - 10:44:16.730	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[19.605ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.737	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.204ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.753	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.387ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.767	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.368ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.775	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.365ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.791	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.858ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.798	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.329ms] [34;1m[rows:-][0m SELECT * FROM `sys_data_authority_id` LIMIT 1
+
+2023/03/15 - 10:44:16.813	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.041ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.820	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.448ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.835	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.656ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.849	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.005ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:44:16.855	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.332ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.870	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.448ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.877	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.837ms] [34;1m[rows:-][0m SELECT * FROM `sys_base_menu_btns` LIMIT 1
+
+2023/03/15 - 10:44:16.893	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.808ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:44:16.901	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.815ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:44:16.915	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.628ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:44:16.929	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.010ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND index_name = 'idx_sys_base_menu_btns_deleted_at'
+
+2023/03/15 - 10:44:16.930	info	register table success
+2023/03/15 - 10:44:16.935	info	router register success
+2023/03/15 - 10:44:16.936	info	server run success on 	{"address": ":8888"}
+2023/03/15 - 10:55:51.389	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.871ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.448	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.071ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.461	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.653ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:51.471	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[9.423ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.486	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.403ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.496	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.797ms] [34;1m[rows:-][0m SELECT * FROM `sys_users` LIMIT 1
+
+2023/03/15 - 10:55:51.511	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.793ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_users' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:51.518	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.930ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.531	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.856ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.581	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[48.734ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_deleted_at'
+
+2023/03/15 - 10:55:51.591	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.495ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.606	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.538ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.618	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.580ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_uuid'
+
+2023/03/15 - 10:55:51.624	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.532ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.636	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.768ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.650	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.264ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND index_name = 'idx_sys_users_username'
+
+2023/03/15 - 10:55:51.655	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[4.717ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.668	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.271ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.691	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[23.684ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:51.705	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.106ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.719	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.139ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.725	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.856ms] [34;1m[rows:-][0m SELECT * FROM `sys_authorities` LIMIT 1
+
+2023/03/15 - 10:55:51.740	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.850ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:51.748	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.167ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.761	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.985ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.776	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.369ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:51.783	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.160ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.798	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.526ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.805	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.294ms] [34;1m[rows:-][0m SELECT * FROM `sys_user_authority` LIMIT 1
+
+2023/03/15 - 10:55:51.817	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.732ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:51.823	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.924ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.834	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.834ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.847	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.559ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:51.853	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.524ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:51.868	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.496ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:51.874	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.930ms] [34;1m[rows:-][0m SELECT * FROM `sys_base_menus` LIMIT 1
+
+2023/03/15 - 10:55:51.893	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[18.643ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:51.934	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[39.173ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `active_name` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:55:51.973	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[38.317ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `keep_alive` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:55:52.003	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[29.588ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `default_menu` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:55:52.034	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[30.129ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `title` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:55:52.076	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[41.994ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `icon` varchar(191) COMMENT '附加属性'
+
+2023/03/15 - 10:55:52.100	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[24.246ms] [34;1m[rows:0][0m ALTER TABLE `sys_base_menus` MODIFY COLUMN `close_tab` boolean COMMENT '附加属性'
+
+2023/03/15 - 10:55:52.111	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.142ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.127	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.970ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.142	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.217ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND index_name = 'idx_sys_base_menus_deleted_at'
+
+2023/03/15 - 10:55:52.150	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.909ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.166	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.147ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.180	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.040ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:52.194	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.103ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.210	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.294ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.217	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.674ms] [34;1m[rows:-][0m SELECT * FROM `sys_authority_menus` LIMIT 1
+
+2023/03/15 - 10:55:52.229	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.912ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:52.235	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.205ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.248	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.548ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.260	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.953ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:52.266	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.537ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.279	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.222ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.289	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[8.916ms] [34;1m[rows:-][0m SELECT * FROM `sys_data_authority_id` LIMIT 1
+
+2023/03/15 - 10:55:52.302	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.134ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:52.309	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.895ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.323	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.115ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.335	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.165ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 10:55:52.341	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.148ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.354	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.078ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.359	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.212ms] [34;1m[rows:-][0m SELECT * FROM `sys_base_menu_btns` LIMIT 1
+
+2023/03/15 - 10:55:52.373	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.228ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' ORDER BY ORDINAL_POSITION
+
+2023/03/15 - 10:55:52.380	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.473ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 10:55:52.399	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[18.560ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 10:55:52.413	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.497ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND index_name = 'idx_sys_base_menu_btns_deleted_at'
+
+2023/03/15 - 10:55:52.414	info	register table success
+2023/03/15 - 10:55:52.419	info	router register success
+2023/03/15 - 10:55:52.420	info	server run success on 	{"address": ":8888"}
+2023/03/15 - 10:56:54.876	info	[31;1mD:/ly-platform/ly-server/service/system/sys_user.go:22 [35;1mrecord not found
+[0m[33m[14.198ms] [34;1m[rows:0][0m SELECT * FROM `sys_users` WHERE username = 'luoyuqi' AND `sys_users`.`deleted_at` IS NULL ORDER BY `sys_users`.`id` LIMIT 1
+
+2023/03/15 - 10:56:54.979	info	[32mD:/ly-platform/ly-server/service/system/sys_user.go:28
+[0m[33m[37.942ms] [34;1m[rows:1][0m INSERT INTO `sys_users` (`created_at`,`updated_at`,`deleted_at`,`uuid`,`username`,`password`,`nick_name`,`side_mode`,`header_img`,`base_color`,`active_color`,`authority_id`,`phone`,`email`,`enable`) VALUES ('2023-03-15 10:56:54.948','2023-03-15 10:56:54.948',NULL,'09c826c1-8ff9-4a86-8424-5bf8146e5e98','luoyuqi','$2a$10$2EXVOxaxOCwvaCy1PxDsNeIQUCbjb6jpyMCLeEFw8KcJc.BiUQ2Rm','罗预期','dark','https://qmplusimg.henrongyi.top/gva_header.jpg','#fff','#1890ff',1,'','',1)
+
+2023/03/15 - 11:03:56.293	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.326ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.356	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.320ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.369	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.594ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.458	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[89.122ms] [34;1m[rows:0][0m CREATE TABLE `sys_users` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`uuid` varchar(191) COMMENT '用户UUID',`username` varchar(191) COMMENT '用户登录名',`password` varchar(191) COMMENT '用户登录密码',`nick_name` varchar(191) DEFAULT '系统用户' COMMENT '用户昵称',`side_mode` varchar(191) DEFAULT 'dark' COMMENT '用户侧边主题',`header_img` varchar(191) DEFAULT 'https://qmplusimg.henrongyi.top/gva_header.jpg' COMMENT '用户头像',`base_color` varchar(191) DEFAULT '#fff' COMMENT '基础颜色',`active_color` varchar(191) DEFAULT '#1890ff' COMMENT '活跃颜色',`authority_id` bigint unsigned DEFAULT 888 COMMENT '用户角色ID',`phone` varchar(191) COMMENT '用户手机号',`email` varchar(191) COMMENT '用户邮箱',`enable` bigint DEFAULT 1 COMMENT '用户是否被冻结 1正常 2冻结',PRIMARY KEY (`id`),INDEX `idx_sys_users_deleted_at` (`deleted_at`),INDEX `idx_sys_users_uuid` (`uuid`),INDEX `idx_sys_users_username` (`username`))
+
+2023/03/15 - 11:03:56.466	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.792ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.481	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.471ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.494	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.842ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.562	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[67.281ms] [34;1m[rows:0][0m CREATE TABLE `sys_authorities` (`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`authority_id` bigint unsigned AUTO_INCREMENT NOT NULL UNIQUE COMMENT '角色ID',`authority_name` varchar(191) COMMENT '角色名',`parent_id` bigint unsigned COMMENT '父角色ID',`default_router` varchar(191) DEFAULT 'dashboard' COMMENT '默认菜单',PRIMARY KEY (`authority_id`))
+
+2023/03/15 - 11:03:56.570	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[7.015ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.583	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.593ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.597	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.620ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.647	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[48.842ms] [34;1m[rows:0][0m CREATE TABLE `sys_data_authority_id` (`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',`data_authority_id_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_authority_authority_id`,`data_authority_id_authority_id`))
+
+2023/03/15 - 11:03:56.653	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.194ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.671	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[17.049ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.685	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.197ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.749	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[63.230ms] [34;1m[rows:0][0m CREATE TABLE `sys_user_authority` (`sys_user_id` bigint unsigned,`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_user_id`,`sys_authority_authority_id`))
+
+2023/03/15 - 11:03:56.754	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.264ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.768	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.551ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.782	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.743ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.898	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[116.065ms] [34;1m[rows:0][0m CREATE TABLE `sys_base_menus` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`menu_level` bigint unsigned,`parent_id` varchar(191) COMMENT '父菜单ID',`path` varchar(191) COMMENT '路由path',`name` varchar(191) COMMENT '路由name',`hidden` boolean COMMENT '是否在列表隐藏',`component` varchar(191) COMMENT '对应前端文件路径',`sort` bigint COMMENT '排序标记',`active_name` varchar(191) COMMENT '附加属性',`keep_alive` boolean COMMENT '附加属性',`default_menu` boolean COMMENT '附加属性',`title` varchar(191) COMMENT '附加属性',`icon` varchar(191) COMMENT '附加属性',`close_tab` boolean COMMENT '附加属性',PRIMARY KEY (`id`),INDEX `idx_sys_base_menus_deleted_at` (`deleted_at`))
+
+2023/03/15 - 11:03:56.905	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[6.487ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:56.917	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.732ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:56.927	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[10.159ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:56.986	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[58.066ms] [34;1m[rows:0][0m CREATE TABLE `sys_authority_menus` (`sys_base_menu_id` bigint unsigned,`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_base_menu_id`,`sys_authority_authority_id`))
+
+2023/03/15 - 11:03:56.991	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[5.235ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:03:57.004	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.170ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:03:57.017	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.619ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:03:57.081	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[63.512ms] [34;1m[rows:0][0m CREATE TABLE `sys_base_menu_btns` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`name` varchar(191) COMMENT '按钮关键key',`desc` varchar(191),`sys_base_menu_id` bigint unsigned COMMENT '菜单ID',PRIMARY KEY (`id`),INDEX `idx_sys_base_menu_btns_deleted_at` (`deleted_at`))
+
+2023/03/15 - 11:03:57.082	info	register table success
+2023/03/15 - 11:03:57.087	info	router register success
+2023/03/15 - 11:03:57.090	info	server run success on 	{"address": ":8888"}
+2023/03/15 - 11:06:25.366	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[1.734ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.445	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[15.319ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.453	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[8.057ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_users' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:25.556	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[95.876ms] [34;1m[rows:0][0m CREATE TABLE `sys_users` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`uuid` varchar(191) COMMENT '用户UUID',`username` varchar(191) COMMENT '用户登录名',`password` varchar(191) COMMENT '用户登录密码',`nick_name` varchar(191) DEFAULT '系统用户' COMMENT '用户昵称',`side_mode` varchar(191) DEFAULT 'dark' COMMENT '用户侧边主题',`header_img` varchar(191) DEFAULT 'https://qmplusimg.henrongyi.top/gva_header.jpg' COMMENT '用户头像',`base_color` varchar(191) DEFAULT '#fff' COMMENT '基础颜色',`active_color` varchar(191) DEFAULT '#1890ff' COMMENT '活跃颜色',`authority_id` bigint unsigned DEFAULT 888 COMMENT '用户角色ID',`phone` varchar(191) COMMENT '用户手机号',`email` varchar(191) COMMENT '用户邮箱',`enable` bigint DEFAULT 1 COMMENT '用户是否被冻结 1正常 2冻结',PRIMARY KEY (`id`),INDEX `idx_sys_users_deleted_at` (`deleted_at`),INDEX `idx_sys_users_uuid` (`uuid`),INDEX `idx_sys_users_username` (`username`))
+
+2023/03/15 - 11:06:25.569	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[1.893ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.588	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[12.526ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.599	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.598ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authorities' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:25.667	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[67.380ms] [34;1m[rows:0][0m CREATE TABLE `sys_authorities` (`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`authority_id` bigint unsigned AUTO_INCREMENT NOT NULL UNIQUE COMMENT '角色ID',`authority_name` varchar(191) COMMENT '角色名',`parent_id` bigint unsigned COMMENT '父角色ID',`default_router` varchar(191) DEFAULT 'dashboard' COMMENT '默认菜单',PRIMARY KEY (`authority_id`))
+
+2023/03/15 - 11:06:25.669	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[1.156ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.684	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.125ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.698	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.397ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_user_authority' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:25.746	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[48.086ms] [34;1m[rows:0][0m CREATE TABLE `sys_user_authority` (`sys_user_id` bigint unsigned,`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_user_id`,`sys_authority_authority_id`))
+
+2023/03/15 - 11:06:25.754	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[2.011ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.774	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.067ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.781	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[7.648ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:25.852	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[65.831ms] [34;1m[rows:0][0m CREATE TABLE `sys_base_menus` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`menu_level` bigint unsigned,`parent_id` varchar(191) COMMENT '父菜单ID',`path` varchar(191) COMMENT '路由path',`name` varchar(191) COMMENT '路由name',`hidden` boolean COMMENT '是否在列表隐藏',`component` varchar(191) COMMENT '对应前端文件路径',`sort` bigint COMMENT '排序标记',`active_name` varchar(191) COMMENT '附加属性',`keep_alive` boolean COMMENT '附加属性',`default_menu` boolean COMMENT '附加属性',`title` varchar(191) COMMENT '附加属性',`icon` varchar(191) COMMENT '附加属性',`close_tab` boolean COMMENT '附加属性',PRIMARY KEY (`id`),INDEX `idx_sys_base_menus_deleted_at` (`deleted_at`))
+
+2023/03/15 - 11:06:25.867	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[3.089ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.885	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.580ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.895	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[9.161ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_authority_menus' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:25.961	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[59.807ms] [34;1m[rows:0][0m CREATE TABLE `sys_authority_menus` (`sys_base_menu_id` bigint unsigned,`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_base_menu_id`,`sys_authority_authority_id`))
+
+2023/03/15 - 11:06:25.969	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[2.075ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:25.986	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.673ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:25.999	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.012ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_data_authority_id' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:26.052	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[52.072ms] [34;1m[rows:0][0m CREATE TABLE `sys_data_authority_id` (`sys_authority_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',`data_authority_id_authority_id` bigint unsigned NOT NULL COMMENT '角色ID',PRIMARY KEY (`sys_authority_authority_id`,`data_authority_id_authority_id`))
+
+2023/03/15 - 11:06:26.057	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[4.779ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:26.072	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.613ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:26.086	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.571ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_parameters' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:26.161	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[74.329ms] [34;1m[rows:0][0m CREATE TABLE `sys_base_menu_parameters` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`sys_base_menu_id` bigint unsigned,`type` varchar(191) COMMENT '地址栏携带参数为params还是query',`key` varchar(191) COMMENT '地址栏携带参数的key',`value` varchar(191) COMMENT '地址栏携带参数的值',PRIMARY KEY (`id`),INDEX `idx_sys_base_menu_parameters_deleted_at` (`deleted_at`))
+
+2023/03/15 - 11:06:26.172	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[11.062ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2023/03/15 - 11:06:26.188	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[14.774ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'ly-server%' ORDER BY SCHEMA_NAME='ly-server' DESC,SCHEMA_NAME limit 1
+
+2023/03/15 - 11:06:26.201	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[13.049ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ly-server' AND table_name = 'sys_base_menu_btns' AND table_type = 'BASE TABLE'
+
+2023/03/15 - 11:06:26.290	info	[32mD:/ly-platform/ly-server/initialize/gorm.go:23
+[0m[33m[87.905ms] [34;1m[rows:0][0m CREATE TABLE `sys_base_menu_btns` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`name` varchar(191) COMMENT '按钮关键key',`desc` varchar(191),`sys_base_menu_id` bigint unsigned COMMENT '菜单ID',PRIMARY KEY (`id`),INDEX `idx_sys_base_menu_btns_deleted_at` (`deleted_at`))
+
+2023/03/15 - 11:06:26.301	info	register table success
+2023/03/15 - 11:06:26.306	info	router register success
+2023/03/15 - 11:06:26.319	info	server run success on 	{"address": ":8888"}
+2023/03/15 - 11:06:40.690	info	[31;1mD:/ly-platform/ly-server/service/system/sys_user.go:22 [35;1mrecord not found
+[0m[33m[15.482ms] [34;1m[rows:0][0m SELECT * FROM `sys_users` WHERE username = 'luoyuqi' AND `sys_users`.`deleted_at` IS NULL ORDER BY `sys_users`.`id` LIMIT 1
+
+2023/03/15 - 11:06:40.784	info	[32mD:/ly-platform/ly-server/service/system/sys_user.go:28
+[0m[33m[32.064ms] [34;1m[rows:1][0m INSERT INTO `sys_users` (`created_at`,`updated_at`,`deleted_at`,`uuid`,`username`,`password`,`nick_name`,`side_mode`,`header_img`,`base_color`,`active_color`,`authority_id`,`phone`,`email`,`enable`) VALUES ('2023-03-15 11:06:40.758','2023-03-15 11:06:40.758',NULL,'d55776bb-ff09-432f-a49a-64691daf1c97','luoyuqi','$2a$10$hyp2iYx6OAnNG3YPLA8zue/pmNsar8ElYe/WGkGmQpuAut7A7s3x6','罗预期','dark','https://qmplusimg.henrongyi.top/gva_header.jpg','#fff','#1890ff',1,'','',1)
+

@@ -11,7 +11,8 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
-	appRouter :=router.RouterGroupApp
+	systemRouter :=router.RouterGroupApp.System
+	frameworkRouter := router.RouterGroupApp.Framework
 	// 注册zap相关中间件
 	Router.Use(middlewares.GinLogger(), middlewares.GinRecovery(true))
 	// 设置跨域中间件
@@ -27,9 +28,9 @@ func Routers() *gin.Engine {
 
 	PrivateGroup := Router.Group(global.CONFIG.System.RouterPrefix)
 	{
-		appRouter.System.UserRouter.InitUserRouter(PrivateGroup) // 注册用户路由
-		
-
+		systemRouter.InitUserRouter(PrivateGroup) // 注册用户路由
+		frameworkRouter.InitDeviceRouter(PrivateGroup) //设备路由
+		frameworkRouter.InitHostRouter(PrivateGroup) //执行主机路由
 	}
 
 	//路由分组

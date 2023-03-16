@@ -3,6 +3,7 @@ package initialize
 import (
 	"ly-server/global"
 	"ly-server/model/system"
+	"ly-server/model/framework"
 	"os"
 
 	"go.uber.org/zap"
@@ -27,6 +28,10 @@ func RegisterTables(db *gorm.DB) {
 		system.SysAuthority{},
 		system.SysBaseMenuParameter{},
 		system.SysBaseMenuBtn{},
+
+		// 工作模块表
+		framework.Device{},
+		framework.Host{},
 
 
 

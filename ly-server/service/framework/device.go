@@ -12,8 +12,8 @@ type DeviceService struct{}
 
 func (DeviceService *DeviceService) Register(d framework.Device) (DeviceInter framework.Device, err error) {
 	var device framework.Device
-	if !errors.Is(global.DB.Where("name = ?", d.Name).First(&device).Error, gorm.ErrRecordNotFound) { 
-		return DeviceInter, errors.New("设备已注册")
+	if !errors.Is(global.DB.Where("serial = ?", d.Serial).First(&device).Error, gorm.ErrRecordNotFound) { 
+		return device, nil
 	}
 	d.UUID = uuid.NewV4()
 	err = global.DB.Create(&d).Error

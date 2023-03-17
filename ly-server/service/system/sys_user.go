@@ -2,6 +2,7 @@ package system
 
 import (
 	"errors"
+	"fmt"
 	"ly-server/global"
 	"ly-server/model/system"
 	"ly-server/utils"
@@ -27,4 +28,26 @@ func (userService *UserService) Register(u system.SysUser) (userInter system.Sys
 	u.UUID = uuid.NewV4()
 	err = global.DB.Create(&u).Error
 	return u, err
+}
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@author: [SliverHorn](https://github.com/SliverHorn)
+//@function: Login
+//@description: 用户登录
+//@param: u *model.SysUser
+//@return: err error, userInter *model.SysUser
+
+func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysUser, err error) {
+	if nil == global.DB {
+		return nil, fmt.Errorf("db not init")
+	}
+
+	var user system.SysUser
+	err = global.DB.Where("username = ?", u.Username).Preload("Authorities").Preload("Authority").First(&user).Error
+	if err == nil {
+		if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
+			return nil, errors.New("密码错误")
+		}
+	}
+	return &user, err
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"ly-server/global"
 	"ly-server/initialize"
+	"ly-server/service/system"
 	"net/http"
 	"time"
 
@@ -26,8 +27,18 @@ func initServer(address string, router *gin.Engine) server {
 }
 
 func RunServer() {
+	if global.CONFIG.System.UseMultipoint || global.CONFIG.System.UseRedis {
+		// 初始化redis服务
+		initialize.Redis()
+	}
+
+	// 从db加载jwt数据
+	if global.DB != nil {
+		system.LoadAll()
+	}
 
 	Router := initialize.Routers()
+	Router.Static("/form-generator", "./resource/page")
 
 	address := fmt.Sprintf(":%d", global.CONFIG.System.Addr)
 	s := initServer(address, Router)

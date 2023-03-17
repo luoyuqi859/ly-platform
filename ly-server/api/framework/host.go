@@ -6,7 +6,6 @@ import (
 	"ly-server/model/framework"
 	frameworkReq "ly-server/model/framework/request"
 	frameworkRes "ly-server/model/framework/response"
-	"ly-server/service"
 	"ly-server/utils"
 
 	"github.com/gin-gonic/gin"
@@ -28,7 +27,7 @@ func (h *HostApi) Register(c *gin.Context) {
 		return
 	}
 	host := &framework.Host{Name: r.Name, Ip: r.Ip, Port: r.Port, Category: r.Category, Platform: r.Platform, Owner: r.Owner}
-	hostReturn, err := service.ServiceGroupApp.FrameworkServiceGroup.HostService.Register(*host)
+	hostReturn, err := hostService.Register(*host)
 	if err != nil {
 		global.LOG.Error("注册失败!", zap.Error(err))
 		response.FailWithDetailed(frameworkRes.HostResponse{Host: hostReturn}, "注册失败", c)

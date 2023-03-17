@@ -25,8 +25,12 @@ func Routers() *gin.Engine {
 			c.JSON(http.StatusOK, "pong")
 		})
 	}
+	{
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
+	}
 
 	PrivateGroup := Router.Group(global.CONFIG.System.RouterPrefix)
+	PrivateGroup.Use(middlewares.JWTAuth())
 	{
 		systemRouter.InitUserRouter(PrivateGroup) // 注册用户路由
 		frameworkRouter.InitDeviceRouter(PrivateGroup) //设备路由

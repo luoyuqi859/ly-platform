@@ -1,19 +1,20 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
-        name: '',
-        component: () => import("@/views/login/index.vue"),
-        meta: {
-            requireAuth: false
-        }
+        redirect: '/login'
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import("@/views/login/index.vue")
     },
     {
         path: "/index",
         name: '首页',
         component: () => import("@/views/layout/index.vue"),
-        children:[
+        children: [
             {
                 path: '/home/dashboard',
                 name: '主页',
@@ -28,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 });
 

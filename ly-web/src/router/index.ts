@@ -11,13 +11,13 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/login/index.vue")
     },
     {
-        path: "/index",
-        name: '首页',
+        path: "/layout",
+        name: 'Layout',
         component: () => import("@/views/layout/index.vue"),
         children: [
             {
-                path: '/home/dashboard',
-                name: '主页',
+                path: '/home',
+                name: 'Home',
                 component: () => import("@/views/home/index.vue"),
                 meta: {
                     requireAuth: true

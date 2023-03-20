@@ -13,8 +13,6 @@ func Routers() *gin.Engine {
 	Router := gin.Default()
 	systemRouter :=router.RouterGroupApp.System
 	frameworkRouter := router.RouterGroupApp.Framework
-	// 注册zap相关中间件
-	Router.Use(middlewares.GinLogger(), middlewares.GinRecovery(true))
 	// 设置跨域中间件
 	Router.Use(middlewares.Cors())
 	// 路由分组

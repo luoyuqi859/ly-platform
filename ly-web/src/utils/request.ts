@@ -1,8 +1,7 @@
 import { useUserStore } from '@/pinia/modules/user'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { emitter } from '@/utils/bus'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import NProgress from '@/utils/progress'
 import router from '@/router'
 
 
@@ -44,7 +43,6 @@ service.interceptors.request.use(
         if (!config.donNotShowLoading) {
             showLoading()
         }
-        NProgress.start() // 每次请求时，调用进度条
         const userStore = useUserStore()
         config.headers = {
             'token': userStore.token,
@@ -69,7 +67,6 @@ service.interceptors.request.use(
 // http response 拦截器
 service.interceptors.response.use(
     (response: any) => {
-        NProgress.done() // 请求有响应的时候
         const userStore = useUserStore()
         if (!response.config.donNotShowLoading) {
             closeLoading()

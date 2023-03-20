@@ -1,54 +1,72 @@
 <template>
-    <el-container class="index-con">
-      <el-aside :class="state.showclass">
-        <leftnav></leftnav>
+  <el-container class="layout-cont">
+    <el-container :class="[isSider?'openside':'hideside',isMobile ? 'mobile': '']">
+      <el-row :class="[isShadowBg?'shadowBg':'']" @click="changeShadow()" />
+      <el-aside class="main-cont main-left gva-aside">
+        <div class="tilte" :style="{background: backgroundColor}">
+          <div v-if="isSider" class="tit-text" :style="{color:textColor}">ly xxxx</div>
+        </div>
+        <Aside class="aside" />
       </el-aside>
-      <el-container class="main-con">
-        <el-header class="index-header">
-          <navcon :breadList="state.breadList" ></navcon>
-        </el-header>
-        <el-main class="index-main">
-          <router-view></router-view>
-        </el-main>
-      </el-container>
+
+
     </el-container>
-  </template>
+  </el-container>
+</template>
 
 <script setup lang="ts">
-import navcon from "@/views/common/components/navcon.vue";
-import leftnav from "@/views/common/components/leftnav.vue";
-import { reactive, ref, toRefs } from "vue";
+import { useUserStore } from "@/pinia/modules/user";
+import { emitter } from "@/utils/bus";
+import { computed, reactive, ref, toRefs } from "vue";
 
-const state = reactive({
-    showclass:"aside",
-    breadList:[],
+const isCollapse = ref(false)
+const isSider = ref(true)
+const isMobile = ref(false)
+const isShadowBg = ref(false)
+const userStore = useUserStore()
 
+const changeShadow = () => {
+  isShadowBg.value = !isShadowBg.value
+  isSider.value = !!isCollapse.value
+  totalCollapse()
+}
+const backgroundColor = computed(() => {
+  if (userStore.sideMode === 'dark') {
+    return '#191a23'
+  } else if (userStore.sideMode === 'light') {
+    return '#fff'
+  } else {
+    return userStore.sideMode
+  }
+})
+const textColor = computed(() => {
+  if (userStore.sideMode === 'dark') {
+    return '#fff'
+  } else if (userStore.sideMode === 'light') {
+    return '#191a23'
+  } else {
+    return userStore.baseColor
+  }
 })
 
+const totalCollapse = () => {
+  isCollapse.value = !isCollapse.value
+  isSider.value = !isCollapse.value
+  isShadowBg.value = !isCollapse.value
+  emitter.emit('collapse', isCollapse.value)
+}
+
 </script>
-<style scoped>
-.index-con {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
+<style lang="scss">
+@import '@/style/mobile.scss';
+
+.dark {
+  background-color: #191a23 !important;
+  color: #fff !important;
 }
-.aside {
-  width: 48px !important;
-  height: 100%;
-  background-color: #334157;
-  margin: 0px;
-}
-.asideshow {
-  width: 200px !important;
-  height: 100%;
-  background-color: #334157;
-  margin: 0px;
-}
-.index-header{
-  max-height: 40px;
-}
-.main-card{
-  min-height: 100%;
-  border: none;
+
+.light {
+  background-color: #fff !important;
+  color: #000 !important;
 }
 </style>

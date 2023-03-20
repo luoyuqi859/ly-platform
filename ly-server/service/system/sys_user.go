@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"ly-server/global"
+	"ly-server/model/common/request"
 	"ly-server/model/system"
 	"ly-server/utils"
 
@@ -50,4 +51,76 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 		}
 	}
 	return &user, err
+}
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@function: ChangePassword
+//@description: 修改用户密码
+//@param: u *model.SysUser, newPassword string
+//@return: userInter *model.SysUser,err error
+
+func (userService *UserService) ChangePassword(u *system.SysUser, newPassword string) (userInter *system.SysUser, err error) {
+	var user system.SysUser
+	if err = global.DB.Where("id = ?", u.ID).First(&user).Error; err != nil {
+		return nil, err
+	}
+	if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
+		return nil, errors.New("原密码错误")
+	}
+	user.Password = utils.BcryptHash(newPassword)
+	err = global.DB.Save(&user).Error
+	return &user, err
+}
+
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@function: DeleteUser
+//@description: 删除用户
+//@param: id float64
+//@return: err error
+
+func (userService *UserService) DeleteUser(id int) (err error) {
+	var user system.SysUser
+	err = global.DB.Where("id = ?", id).Delete(&user).Error
+	if err != nil {
+		return err
+	}
+	err = global.DB.Delete(&[]system.SysUserAuthority{}, "sys_user_id = ?", id).Error
+	return err
+}
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@author: [SliverHorn](https://github.com/SliverHorn)
+//@function: GetUserInfo
+//@description: 获取用户信息
+//@param: uuid uuid.UUID
+//@return: err error, user system.SysUser
+
+func (userService *UserService) GetUserInfo(uuid uuid.UUID) (user system.SysUser, err error) {
+	var reqUser system.SysUser
+	err = global.DB.Preload("Authorities").Preload("Authority").First(&reqUser, "uuid = ?", uuid).Error
+	if err != nil {
+		return reqUser, err
+	}
+	MenuServiceApp.UserAuthorityDefaultRouter(&reqUser)
+	return reqUser, err
+}
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@function: GetUserInfoList
+//@description: 分页获取数据
+//@param: info request.PageInfo
+//@return: err error, list interface{}, total int64
+
+func (userService *UserService) GetUserInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+	db := global.DB.Model(&system.SysUser{})
+	var userList []system.SysUser
+	err = db.Count(&total).Error
+	if err != nil {
+		return
+	}
+	err = db.Limit(limit).Offset(offset).Preload("Authorities").Preload("Authority").Find(&userList).Error
+	return userList, total, err
 }

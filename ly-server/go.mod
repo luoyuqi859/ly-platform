@@ -3,10 +3,10 @@ module ly-server
 go 1.18
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/gin-gonic/gin v1.9.0
 	github.com/go-redis/redis/v8 v8.11.4
-	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
 	github.com/satori/go.uuid v1.2.0
 	github.com/songzhibin97/gkit v1.2.9

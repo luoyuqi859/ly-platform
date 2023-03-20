@@ -14,12 +14,12 @@
         <el-input type="password" id="password" v-model="loginFormData.password"
            placeholder="密码"></el-input>
       </el-form-item>
-      <el-row style="margin-top: -10px">
+      <el-row>
         <el-col :span="8">
-          <el-checkbox class="remember">记住密码</el-checkbox>
+          <el-checkbox>记住密码</el-checkbox>
         </el-col>
         <el-col :span="16">
-          <el-button type="text" style="float:right">立即注册</el-button>
+          <el-button type="primary" style="float:right;text-align: right">立即注册</el-button>
         </el-col>
       </el-row>
       <el-form-item style="width:100%; margin-top:20px">
@@ -34,8 +34,10 @@
 import { useUserStore } from "@/pinia/modules/user";
 import { ElMessage, FormInstance } from "element-plus";
 import { reactive, ref} from "vue";
+import { useRouter } from "vue-router";
 
 const loginForm:any = ref<FormInstance>()
+const router = useRouter()
 
 const loginFormData = reactive({
   username: 'admin',
@@ -55,6 +57,7 @@ const submitForm = () => {
   loginForm.value.validate(async(v:any) => {
     if (v) {
       const flag = await login()
+      router.push('/home')
     } else {
       ElMessage({
         type: 'error',
@@ -66,8 +69,7 @@ const submitForm = () => {
   })
 }
 </script>
-<style scoped>
-.login-wrap {
+<style scoped>.login-wrap {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -77,22 +79,19 @@ const submitForm = () => {
   background-position: center right;
   background-size: 100%;
 }
-
-.welcome-title {
+.welcome-title{
   font-family: initial;
   text-align: center;
   font-size: 36px;
   margin-bottom: 40px;
 }
-
-.footer {
+.footer{
   position: fixed;
   font-size: 12px;
   left: 0;
   right: 0;
   bottom: 0;
 }
-
 .login-container {
   border-radius: 10px;
   margin: 0px auto;
@@ -103,19 +102,15 @@ const submitForm = () => {
   text-align: left;
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
 }
-
 .title {
   margin: 0px auto 40px auto;
   text-align: center;
   color: #505458;
 }
 
-.remember {
-  margin: 11px 0px 0px 0px;
-}
-
-.logoimg {
+.logoimg{
   width: 40px;
   height: 40px;
   margin-bottom: 4px;
-}</style>
+}
+</style>

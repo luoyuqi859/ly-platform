@@ -28,6 +28,7 @@ func RegisterTables(db *gorm.DB) {
 		system.SysAuthority{},
 		system.SysBaseMenuParameter{},
 		system.SysBaseMenuBtn{},
+		system.SysOperationRecord{},
 
 		// 工作模块表
 		framework.Device{},

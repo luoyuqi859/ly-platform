@@ -2,6 +2,7 @@ package system
 
 import (
 	"ly-server/global"
+	"ly-server/model/common/request"
 	"ly-server/model/common/response"
 	"ly-server/model/system"
 	systemReq "ly-server/model/system/request"
@@ -140,3 +141,124 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 		}, "登录成功", c)
 	}
 }
+
+// ChangePassword
+// @Tags      SysUser
+// @Summary   用户修改密码
+// @Security  ApiKeyAuth
+// @Produce  application/json
+// @Param     data  body      systemReq.ChangePasswordReq    true  "用户名, 原密码, 新密码"
+// @Success   200   {object}  response.Response{msg=string}  "用户修改密码"
+// @Router    /user/changePassword [post]
+func (b *BaseApi) ChangePassword(c *gin.Context) {
+	var req systemReq.ChangePasswordReq
+	err := c.ShouldBind(&req)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(req, utils.ChangePasswordVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	uid := utils.GetUserID(c)
+	u := &system.SysUser{MODEL: global.MODEL{ID: uid}, Password: req.Password}
+	_, err = userService.ChangePassword(u, req.NewPassword)
+	if err != nil {
+		global.LOG.Error("修改失败!", zap.Error(err))
+		response.FailWithMessage("修改失败，原密码与当前账户不符", c)
+		return
+	}
+	response.OkWithMessage("修改成功", c)
+}
+
+// DeleteUser
+// @Tags      SysUser
+// @Summary   删除用户
+// @Security  ApiKeyAuth
+// @accept    application/json
+// @Produce   application/json
+// @Param     data  body      request.GetById                true  "用户ID"
+// @Success   200   {object}  response.Response{msg=string}  "删除用户"
+// @Router    /user/deleteUser [delete]
+func (b *BaseApi) DeleteUser(c *gin.Context) {
+	var reqId request.GetById
+	err := c.ShouldBind(&reqId)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(reqId, utils.IdVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	jwtId := utils.GetUserID(c)
+	if jwtId != uint(reqId.ID) {
+		response.FailWithMessage("删除失败, 自杀失败", c)
+		return
+	}
+	err = userService.DeleteUser(reqId.ID)
+	if err != nil {
+		global.LOG.Error("删除失败!", zap.Error(err))
+		response.FailWithMessage("删除失败", c)
+		return
+	}
+	response.OkWithMessage("删除成功", c)
+}
+
+// GetUserList
+// @Tags      SysUser
+// @Summary   分页获取用户列表
+// @Security  ApiKeyAuth
+// @accept    application/json
+// @Produce   application/json
+// @Param     data  body      request.PageInfo                                        true  "页码, 每页大小"
+// @Success   200   {object}  response.Response{data=response.PageResult,msg=string}  "分页获取用户列表,返回包括列表,总数,页码,每页数量"
+// @Router    /user/getUserList [post]
+func (b *BaseApi) GetUserList(c *gin.Context) {
+	var pageInfo request.PageInfo
+	err := c.ShouldBind(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(pageInfo, utils.PageInfoVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	list, total, err := userService.GetUserInfoList(pageInfo)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取成功", c)
+}
+
+// GetUserInfo
+// @Tags      SysUser
+// @Summary   获取用户信息
+// @Security  ApiKeyAuth
+// @accept    application/json
+// @Produce   application/json
+// @Success   200  {object}  response.Response{data=map[string]interface{},msg=string}  "获取用户信息"
+// @Router    /user/getUserInfo [get]
+func (b *BaseApi) GetUserInfo(c *gin.Context) {
+	uuid := utils.GetUserUuid(c)
+	ReqUser, err := userService.GetUserInfo(uuid)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"userInfo": ReqUser}, "获取成功", c)
+}
+

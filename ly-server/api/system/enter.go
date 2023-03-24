@@ -4,6 +4,7 @@ import "ly-server/service"
 
 type ApiGroup struct {
 	BaseApi
+	AuthorityApi
 }
 
 var (

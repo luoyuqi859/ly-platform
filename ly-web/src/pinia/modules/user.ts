@@ -4,7 +4,6 @@ import commonStorage from '@/utils/localstorige'
 import { ElLoading, ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
-import { useRouterStore } from '@/pinia/modules/router'
 import { jsonInBlacklist } from '@/api/jwt'
 
 export const useUserStore = defineStore("user", () => {

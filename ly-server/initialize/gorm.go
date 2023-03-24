@@ -22,13 +22,13 @@ func Gorm() *gorm.DB {
 // Author SliverHorn
 func RegisterTables(db *gorm.DB) {
 	err := db.AutoMigrate(
-		// 系统模块表
 		system.SysUser{},
 		system.SysBaseMenu{},
+		system.JwtBlacklist{},
 		system.SysAuthority{},
+		system.SysOperationRecord{},
 		system.SysBaseMenuParameter{},
 		system.SysBaseMenuBtn{},
-		system.SysOperationRecord{},
 
 		// 工作模块表
 		framework.Device{},

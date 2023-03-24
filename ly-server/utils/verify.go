@@ -8,4 +8,5 @@ var (
 	LoginVerify          = Rules{"Username": {NotEmpty()}, "Password": {NotEmpty()}}
 	ChangePasswordVerify = Rules{"Password": {NotEmpty()}, "NewPassword": {NotEmpty()}}
 	PageInfoVerify       = Rules{"Page": {NotEmpty()}, "PageSize": {NotEmpty()}}
+	AuthorityVerify      = Rules{"AuthorityId": {NotEmpty()}, "AuthorityName": {NotEmpty()}}
 )

@@ -124,3 +124,10 @@ func (userService *UserService) GetUserInfoList(info request.PageInfo) (list int
 	err = db.Limit(limit).Offset(offset).Preload("Authorities").Preload("Authority").Find(&userList).Error
 	return userList, total, err
 }
+
+//@description: 获取用户信息通过id
+func (userService *UserService) GetUserInfoById(id int) (user system.SysUser, err error) {
+	var reqUser system.SysUser
+	err = global.DB.Preload("Authorities").Preload("Authority").Where("id = ?", id).First(&reqUser).Error
+	return reqUser, err
+}

@@ -1,44 +1,63 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from "path";
-import * as dotenv from 'dotenv'
-import * as fs from 'fs'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
-const NODE_ENV = process.env.NODE_ENV || 'development'
-const envFiles = [
-  `.env.${NODE_ENV}`
-]
-for (const file of envFiles) {
-  const envConfig = dotenv.parse(fs.readFileSync(file))
-  for (const k in envConfig) {
-    process.env[k] = envConfig[k]
-  }
-}
 
 // https://vitejs.dev/config/
-export default defineConfig({
-
-  plugins: [vue()],
-    //这里进行配置别名
-  resolve: {
-    alias: {
-      '@': path.resolve('./src') // @代替src
-    }
-  },
-  server: {
-    host: "0.0.0.0",
-    port: parseInt(process.env.VITE_CLI_PORT, 10),
-    proxy: {
-      [process.env.VITE_BASE_API]: { // 需要代理的路径   例如 '/api'
-        target: `${process.env.VITE_BASE_PATH}:${process.env.VITE_SERVER_PORT}/`, // 代理到 目标路径
-        changeOrigin: true,
+export default defineConfig(({ mode, command }) => {
+  const env = loadEnv(mode, process.cwd())
+  const { VITE_APP_ENV, VITE_CLI_PORT, VITE_BASE_API, VITE_BASE_PATH, VITE_SERVER_PORT } = env
+  return {
+    // 部署生产环境和开发环境下的URL。
+    // 默认情况下，vite 会假设你的应用是被部署在一个域名的根路径上
+    // 例如 https://www.ruoyi.vip/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.ruoyi.vip/admin/，则设置 baseUrl 为 /admin/。
+    base: VITE_APP_ENV === 'production' ? '/' : '/',
+    plugins: [
+      vue(),
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons/svg')],
+        // 指定symbolId格式
+        symbolId: 'icon-[dir]-[name]'
+      }),
+    ],
+    resolve: {
+      // https://cn.vitejs.dev/config/#resolve-alias
+      alias: {
+        // 设置别名
+        '@': path.resolve(__dirname, './src')
+      },
+    },
+    // vite 相关配置
+    server: {
+      port: parseInt(VITE_CLI_PORT, 10),
+      host: "0.0.0.0",
+      proxy: {
+        // https://cn.vitejs.dev/config/#server-proxy
+        [VITE_BASE_API]: {
+          target: `${VITE_BASE_PATH}:${VITE_SERVER_PORT}/`, // 代理到 目标路径
+          changeOrigin: true,
+        }
       }
     },
-  },
-  build: {
-    // 指定输出目录
-    outDir: 'dist',
-    // 指定生成的静态资源在 HTML 中的路径
-    assetsDir: 'assets',
-  },
+    css: {
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: 'internal:charset-removal',
+            AtRule: {
+              charset: (atRule) => {
+                if (atRule.name === 'charset') {
+                  atRule.remove();
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
 })
+
+

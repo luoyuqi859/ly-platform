@@ -262,3 +262,24 @@ func (b *BaseApi) GetUserInfo(c *gin.Context) {
 	response.OkWithDetailed(gin.H{"userInfo": ReqUser}, "获取成功", c)
 }
 
+// @Summary   获取用户信息通过id
+func (a *BaseApi) GetUserInfoById(c *gin.Context) {
+	var idInfo request.GetById
+	err := c.ShouldBind(&idInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(idInfo, utils.IdVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	ReqUser, err := userService.GetUserInfoById(idInfo.ID)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"userInfo": ReqUser}, "获取成功", c)
+}

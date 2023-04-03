@@ -1,16 +1,22 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import router from './router'
-import { store } from './pinia'
-import NProgress from '@/utils/progress'
-// 统一导入el-icon图标
-import * as ElIconModules from '@element-plus/icons-vue'
+import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文语言
 
-NProgress.start()
+import '@/assets/styles/index.scss' // global css
+
+// svg图标
+import 'virtual:svg-icons-register'
+import svgIcon from '@/components/SvgIcon/index.vue'
+import elementIcons from '@/components/SvgIcon/svgicon'
+
+
+import router from './router'
+import store from './pinia'
+
 
 
 const app = createApp(App)
@@ -19,7 +25,11 @@ const app = createApp(App)
 
 
 // element plus组件
-app.use(ElementPlus, { locale: zhCn })
+app.use(ElementPlus, { locale: locale })
+app.use(elementIcons)
+
+//自定义图标
+app.component('svg-icon', svgIcon)
 
 // 路由
 app.use(router)

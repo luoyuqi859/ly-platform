@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const routes: Array<RouteRecordRaw> = [
+
+export const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         redirect: '/login'
@@ -13,14 +14,46 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/layout",
         name: 'Layout',
-        component: () => import("@/views/layout/index.vue"),
+        component: () => import("@/layout/index.vue"),
         children: [
             {
                 path: '/home',
                 name: 'Home',
                 component: () => import("@/views/home/index.vue"),
                 meta: {
-                    requireAuth: true
+                    requireAuth: true,
+                }
+            },
+            {
+                path: '/user/list',
+                name: 'User-List',
+                component: () => import("@/views/system/user/index.vue"),
+                meta: {
+                    requireAuth: true,
+                }
+            },
+            {
+                path: '/device/list',
+                name: 'Device-List',
+                component: () => import("@/views/device/deviceList.vue"),
+                meta: {
+                    requireAuth: true,
+                }
+            },
+            {
+                path: '/host/list',
+                name: 'Host-List',
+                component: () => import("@/views/host/hostList.vue"),
+                meta: {
+                    requireAuth: true,
+                }
+            },
+            {
+                path: '/task/list',
+                name: 'Task-List',
+                component: () => import("@/views/task/taskList.vue"),
+                meta: {
+                    requireAuth: true,
                 }
             }
         ]

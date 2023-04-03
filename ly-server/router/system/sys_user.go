@@ -18,7 +18,8 @@ func (r *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 		userRouter.DELETE("deleteUser", baseApi.DeleteUser)               // 删除用户
 	}
 	{
-		userRouterWithoutRecord.POST("getUserList", baseApi.GetUserList) // 分页获取用户列表
-		userRouterWithoutRecord.GET("getUserInfo", baseApi.GetUserInfo)  // 获取自身信息
+		userRouterWithoutRecord.POST("list", baseApi.GetUserList) // 分页获取用户列表
+		userRouterWithoutRecord.GET("info", baseApi.GetUserInfo)  // 获取自身信息
+		userRouterWithoutRecord.POST("getUserInfoById", baseApi.GetUserInfoById)   // 根据id获取用户信息
 	}
 }

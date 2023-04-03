@@ -50,7 +50,7 @@ const rules = reactive({
 
 const userStore = useUserStore()
 const login = async() => {
-  return await userStore.LoginIn(loginFormData)
+  return await userStore.login(loginFormData)
 }
 
 const submitForm = () => {
@@ -69,7 +69,8 @@ const submitForm = () => {
   })
 }
 </script>
-<style scoped>.login-wrap {
+<style lang="scss" scoped>
+.login-wrap {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -107,7 +108,9 @@ const submitForm = () => {
   text-align: center;
   color: #505458;
 }
-
+.remember {
+  margin: 11px 0px 0px 0px;
+}
 .logoimg{
   width: 40px;
   height: 40px;

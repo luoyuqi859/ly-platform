@@ -8,7 +8,6 @@ type DeviceRegister struct {
 	Model           string `json:"model"`
 	Platform        string `json:"platform"`
 	PlatformVersion string `json:"platformVersion"`
-	Owner           string `json:"owner"`
 }
 
 type HostRegister struct{
@@ -17,5 +16,5 @@ type HostRegister struct{
 	Port     string    `json:"port"`
 	Category string    `json:"category"`
 	Platform string    `json:"platform"`
-	Owner    string    `json:"owner"`
+	Repo     string    `json:"repo"`
 }

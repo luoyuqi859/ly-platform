@@ -2,6 +2,7 @@ package framework
 
 import (
 	"ly-server/global"
+	"ly-server/model/common/request"
 	"ly-server/model/common/response"
 	"ly-server/model/framework"
 	frameworkReq "ly-server/model/framework/request"
@@ -26,7 +27,8 @@ func (d *DeviceApi) Register(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	device := &framework.Device{Name: r.Name, Serial: r.Serial, Brand: r.Brand, Model: r.Model, Platform: r.Platform, PlatformVersion: r.PlatformVersion, Owner: r.Owner}
+	id :=utils.GetUserID(c)
+	device := &framework.Device{Name: r.Name, Serial: r.Serial, Brand: r.Brand, Model: r.Model, Platform: r.Platform, PlatformVersion: r.PlatformVersion, Owner: id}
 	deviceReturn, err := deviceService.Register(*device)
 	if err != nil {
 		global.LOG.Error("注册失败!", zap.Error(err))
@@ -34,4 +36,30 @@ func (d *DeviceApi) Register(c *gin.Context) {
 		return
 	}
 	response.OkWithDetailed(frameworkRes.DeviceResponse{Device: deviceReturn}, "注册成功", c)
+}
+
+func (d *DeviceApi) GetDeviceList(c *gin.Context) {
+	var pageInfo request.PageInfo
+	err := c.ShouldBind(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(pageInfo, utils.PageInfoVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	list, total, err := deviceService.GetDeviceList(pageInfo)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取成功", c)
 }

@@ -2,6 +2,7 @@ package framework
 
 import (
 	"ly-server/api"
+	"ly-server/middlewares"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,9 +10,13 @@ import (
 type DeviceRouter struct{}
 
 func (r *DeviceRouter) InitDeviceRouter(Router *gin.RouterGroup) {
-	DeviceRouter := Router.Group("device").Use()
+	DeviceRouter := Router.Group("device").Use(middlewares.OperationRecord())
+	DeviceRouterWithoutRecord := Router.Group("device")
 	DeviceApi := api.ApiGroupApp.FrameworkApiGroup.DeviceApi
 	{
 		DeviceRouter.POST("register", DeviceApi.Register)        // 设备注册
+	}
+	{
+		DeviceRouterWithoutRecord.POST("list", DeviceApi.GetDeviceList) 
 	}
 }

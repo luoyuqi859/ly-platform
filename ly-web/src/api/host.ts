@@ -8,3 +8,12 @@ export const getHostList = (data: any) => {
         data: data
     })
 }
+
+// @Summary 根据用户id获取主机
+export const getHostByUserId = (data: any) => {
+    return service({
+        url: '/host/getHostByUserID',
+        method: 'post',
+        data: data
+    })
+}

@@ -10,6 +10,13 @@
             <el-table-column label="平台版本" prop="platformVersion" />
             <el-table-column label="状态" prop="status" />
             <el-table-column label="所有者" prop="owner" />
+            <el-table-column label="操作" width="230" class-name="fixed-width">
+                <template #default="{ row, $index }">
+                    <el-button type="primary" size="small" @click="projectionScreen(row)">
+                        投屏
+                    </el-button>
+                </template>
+            </el-table-column>
         </el-table>
 
         <pagination v-show="total > 0" :total="total" v-model:page="queryParams.Page" v-model:limit="queryParams.PageSize"
@@ -21,8 +28,9 @@
 import { ref } from 'vue';
 import pagination from "@/components/Pagination/index.vue"
 import { getDeviceList } from '@/api/device';
+import { useRouter } from 'vue-router';
 
-
+const router = useRouter();
 const loading = ref(true);
 const deviceList = ref([]);
 const total = ref(0);
@@ -37,6 +45,16 @@ const getDevices= () => {
         deviceList.value = res.data.list
         total.value = res.data.total
         loading.value = false;
+    })
+}
+
+const projectionScreen = (row:any)=>{
+    console.log(row)
+    router.push({
+        path: `/device/minicap`,
+        query:{
+            owner: row.owner
+        }
     })
 }
 

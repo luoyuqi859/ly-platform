@@ -1,66 +1,117 @@
 <template>
-    <div class="menu-wrapper">
-        <el-menu-item index="/home" :route="{ path: '/home' }">
-            <template #title>
-                <el-icon>
-                    <HomeFilled />
-                </el-icon>
-                <span>首页</span>
-            </template>
-        </el-menu-item>
+    <div v-if="!item.hidden">
+        <template
+            v-if="
+                hasOneShowingChild(item.children, item) &&
+                (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
+                !item.alwaysShow
+            "
+        >
+            <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path, onlyOneChild.query)">
+                <el-menu-item
+                    :index="resolvePath(onlyOneChild.path)"
+                    :class="{ 'sub-menu-title-noDropdown': !isNest }"
+                >
+                    <svg-icon :icon-class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" />
+                    <template #title
+                        ><span class="menu-title" :title="hasTitle(onlyOneChild.meta.title)">{{
+                            onlyOneChild.meta.title
+                        }}</span></template
+                    >
+                </el-menu-item>
+            </AppLink>
+        </template>
 
-        <el-sub-menu index="/system">
-            <template #title>
-                <el-icon>
-                    <Setting />
-                </el-icon>
-                <span>系统管理</span>
+        <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" teleported>
+            <template v-if="item.meta" #title>
+                <svg-icon :icon-class="item.meta && item.meta.icon" />
+                <span class="menu-title" :title="hasTitle(item.meta.title)">{{ item.meta.title }}</span>
             </template>
-            <el-menu-item index="/user/list" :route="{ path: '/user/list' }">用户列表</el-menu-item>
-            <el-menu-item index="/host/detail">xxx</el-menu-item>
-        </el-sub-menu>
 
-        <el-sub-menu index="/host">
-            <template #title>
-                <el-icon>
-                    <Monitor />
-                </el-icon>
-                <span>主机管理</span>
-            </template>
-            <el-menu-item index="/host/list" :route="{ path: '/host/list' }">主机列表</el-menu-item>
-            <el-menu-item index="/host/detail">xxx</el-menu-item>
-        </el-sub-menu>
-
-        <el-sub-menu index="/device">
-            <template #title>
-                <el-icon>
-                    <Iphone />
-                </el-icon>
-                <span>设备管理</span>
-            </template>
-            <el-menu-item index="/device/list" :route="{ path: '/device/list' }">设备列表</el-menu-item>
-            <el-menu-item index="/device/detail">xxx</el-menu-item>
-        </el-sub-menu>
-
-        <el-sub-menu index="/task">
-            <template #title>
-                <el-icon>
-                    <List />
-                </el-icon>
-                <span>任务管理</span>
-            </template>
-            <el-menu-item index="/task/list"  :route="{ path: '/task/list' }">任务列表</el-menu-item>
-            <el-menu-item index="1-2">报告</el-menu-item>
+            <SidebarItem
+                v-for="child in item.children"
+                :key="child.path"
+                :is-nest="true"
+                :item="child"
+                :base-path="resolvePath(child.path)"
+                class="nest-menu"
+            />
         </el-sub-menu>
     </div>
 </template>
-<script lang="ts" setup>
-</script>
+<script setup lang="ts">
+import { isExternal } from '@/utils/validate';
+import AppLink from './Link.vue';
+// import subMenu from 'element-plus/es/components/menu/src/sub-menu';
+// import item from 'element-plus/es/components/space/src/item';
+import { ref } from 'vue';
+import { getNormalPath } from '@/utils/common';
 
-<style lang="scss" scoped>
-.icon {
-    // margin-bottom: 3px;
-    display: inline-block;
-    vertical-align: top;
+const props = defineProps({
+    // route object
+    item: {
+        type: Object,
+        required: true,
+    },
+    isNest: {
+        type: Boolean,
+        default: false,
+    },
+    basePath: {
+        type: String,
+        default: '',
+    },
+});
+
+const onlyOneChild = ref<any>({});
+
+function hasOneShowingChild(children: any[] = [], parent: any) {
+    if (!children) {
+        children = [];
+    }
+    const showingChildren = children.filter(item => {
+        if (item.hidden) {
+            return false;
+        } else {
+            // Temp set(will be used if only has one showing child)
+            onlyOneChild.value = item;
+            return true;
+        }
+    });
+
+    // When there is only one child router, the child router is displayed by default
+    if (showingChildren.length === 1) {
+        return true;
+    }
+
+    // Show parent if there are no child router to display
+    if (showingChildren.length === 0) {
+        onlyOneChild.value = { ...parent, path: '', noShowingChildren: true };
+        return true;
+    }
+
+    return false;
 }
-</style>
+
+function resolvePath(routePath: any, routeQuery?: any) {
+    if (isExternal(routePath)) {
+        return routePath;
+    }
+    if (isExternal(props.basePath)) {
+        return props.basePath;
+    }
+    if (routeQuery) {
+        let query = JSON.parse(routeQuery);
+        return { path: getNormalPath(props.basePath + '/' + routePath), query: query };
+    }
+    return getNormalPath(props.basePath + '/' + routePath);
+}
+
+function hasTitle(title: any) {
+    if (title.length > 5) {
+        return title;
+    } else {
+        return '';
+    }
+}
+</script>

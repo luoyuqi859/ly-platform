@@ -1,16 +1,16 @@
 <template>
-    <div>
+  <div>
       <svg-icon :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'" @click="toggle" />
-    </div>
-  </template>
-  
+  </div>
+</template>
+
 <script setup lang="ts">
-import { useFullscreen } from '@vueuse/core'
+import { useFullscreen } from '@vueuse/core';
 
 const { isFullscreen, enter, exit, toggle } = useFullscreen();
 </script>
-  
-<style lang='scss' scoped>
+
+<style lang="scss" scoped>
 .screenfull-svg {
   display: inline-block;
   cursor: pointer;

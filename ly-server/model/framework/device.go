@@ -16,7 +16,7 @@ type Device struct {
 	Platform        string    `json:"platform"  gorm:"default:android;comment:平台类型 android ios web"`
 	PlatformVersion string    `json:"platformVersion"  gorm:"comment:平台版本"`
 	Status          string    `json:"status"  gorm:"default:idle;comment:设备状态 idle offline occupied"`
-	Owner           uint       `json:"owner"  gorm:"comment:用户ID"`
+	Owner           uint      `json:"owner"  gorm:"comment:用户ID"`
 }
 
 func (Device) TableName() string {

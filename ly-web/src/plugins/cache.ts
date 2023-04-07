@@ -1,13 +1,5 @@
-interface Cache {
-    set(key: string, value: string): void;
-    get(key: string): string | null;
-    setJSON(key: string, jsonValue: object): void;
-    getJSON<T>(key: string): T | null;
-    remove(key: string): void;
-}
-
-const sessionCache: Cache = {
-    set(key: string, value: string) {
+const sessionCache = {
+    set(key: string, value: any) {
         if (!sessionStorage) {
             return;
         }
@@ -15,7 +7,6 @@ const sessionCache: Cache = {
             sessionStorage.setItem(key, value);
         }
     },
-
     get(key: string) {
         if (!sessionStorage) {
             return null;
@@ -25,28 +16,23 @@ const sessionCache: Cache = {
         }
         return sessionStorage.getItem(key);
     },
-
-    setJSON(key: string, jsonValue: object) {
+    setJSON(key: string, jsonValue: any) {
         if (jsonValue != null) {
             this.set(key, JSON.stringify(jsonValue));
         }
     },
-
-    getJSON<T>(key: string) {
+    getJSON(key: string) {
         const value = this.get(key);
         if (value != null) {
-            return JSON.parse(value) as T;
+            return JSON.parse(value);
         }
-        return null;
     },
-
     remove(key: string) {
         sessionStorage.removeItem(key);
     },
 };
-
-const localCache: Cache = {
-    set(key: string, value: string) {
+const localCache = {
+    set(key: string, value: any) {
         if (!localStorage) {
             return;
         }
@@ -54,7 +40,6 @@ const localCache: Cache = {
             localStorage.setItem(key, value);
         }
     },
-
     get(key: string) {
         if (!localStorage) {
             return null;
@@ -64,21 +49,17 @@ const localCache: Cache = {
         }
         return localStorage.getItem(key);
     },
-
-    setJSON(key: string, jsonValue: object) {
+    setJSON(key: string, jsonValue: any) {
         if (jsonValue != null) {
             this.set(key, JSON.stringify(jsonValue));
         }
     },
-
-    getJSON<T>(key: string) {
+    getJSON(key: string) {
         const value = this.get(key);
         if (value != null) {
-            return JSON.parse(value) as T;
+            return JSON.parse(value);
         }
-        return null;
     },
-
     remove(key: string) {
         localStorage.removeItem(key);
     },
@@ -89,7 +70,6 @@ export default {
      * 会话级缓存
      */
     session: sessionCache,
-
     /**
      * 本地缓存
      */

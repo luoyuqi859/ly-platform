@@ -15,7 +15,7 @@ type Host struct {
 	Category string    `json:"category"  gorm:"default:private;comment:执行主机类型 private public"`
 	Platform string    `json:"platform"  gorm:"comment:平台"`
 	Repo     string    `json:"repo"  gorm:"comment:仓库"`
-	Owner    uint       `json:"owner"  gorm:"comment:用户ID"`
+	Owner    uint      `json:"owner"  gorm:"comment:用户ID"`
 }
 
 func (Host) TableName() string {

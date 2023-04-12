@@ -37,7 +37,12 @@ export const routes: Array<RouteRecordRaw> = [
                 meta: { title: '主机列表', icon: 'dashboard' },
                 children: [
                 ]
-            }
+            },
+            {
+                path: 'config',
+                name: 'Config',
+                component: () => import('@/views/host/viewConfig.vue'),
+            },
         ]
     },
     {

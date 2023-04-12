@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <JsonEditor v-model="code"></JsonEditor>
+
     </div>
   </template>
 

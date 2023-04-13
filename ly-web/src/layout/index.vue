@@ -5,7 +5,8 @@
             <Sidebar v-if="!sidebar.hide" class="sidebar-container" />
             <div :class="{ hasTagsView: needTagsView, sidebarHide: sidebar.hide }" class="main-container">
                 <div :class="{ 'fixed-header': fixedHeader }">
-                    <Navbar/>
+                    <Navbar @setLayout="setLayout"/>
+                    <TagsView v-if="needTagsView" />
                 </div>
                 <AppMain />
             </div>
@@ -19,6 +20,7 @@ import { computed, ref, watchEffect } from 'vue';
 import Sidebar from '@/layout/components/SideBar/index.vue'
 import AppMain from '@/layout/components/AppMain.vue';
 import Navbar from '@/layout/components/Navbar.vue'
+import TagsView from '@/layout/components/TagsView/index.vue'
 import useAppStore from '@/store/modules/app';
 import useSettingsStore from '@/store/modules/settings';
 
@@ -56,7 +58,7 @@ function handleClickOutside() {
 }
 
 const settingRef = ref<any>(null);
-    function setLayout() {
+function setLayout() {
     settingRef.value?.openSetting();
 }
 

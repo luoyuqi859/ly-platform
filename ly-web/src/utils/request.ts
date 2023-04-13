@@ -50,6 +50,7 @@ service.interceptors.request.use(
                 time: new Date().getTime(),
             };
             const sessionObj = cache.session.getJSON('sessionObj');
+            console.log(sessionObj, "看看")
             if (sessionObj === undefined || sessionObj === null || sessionObj === '') {
                 cache.session.setJSON('sessionObj', requestObj);
             } else {

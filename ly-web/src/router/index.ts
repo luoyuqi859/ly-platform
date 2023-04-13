@@ -20,7 +20,7 @@ export const routes: Array<RouteRecordRaw> = [
                 path: 'dashboard',
                 name: 'Dashboard',
                 component: () => import('@/views/home/index.vue'),
-                meta: { title: '数据报表', icon: 'dashboard' },
+                meta: { title: '仪表面板', icon: 'dashboard' },
             }
         ]
     },
@@ -58,7 +58,12 @@ export const routes: Array<RouteRecordRaw> = [
                 meta: { title: '设备列表', icon: 'dashboard' },
                 children: [
                 ]
-            }
+            },
+            {
+                path: 'performance',
+                name: 'Performance',
+                component: () => import('@/views/device/performance.vue'),
+            },
         ]
     },
     {

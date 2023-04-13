@@ -27,7 +27,7 @@ function getBreadcrumb() {
     const first = matched[0];
     // 判断是否为首页
     if (!isDashboard(first)) {
-        matched = [{ path: '/index', meta: { title: '首页' } }].concat(matched);
+        matched = [{ path: '/home/dashboard', meta: { title: '首页' } }].concat(matched);
     }
 
     levelList.value = matched.filter(
@@ -39,7 +39,7 @@ function isDashboard(route: any) {
     if (!name) {
         return false;
     }
-    return name.trim() === 'Index';
+    return name.trim() === 'Home';
 }
 function handleLink(item: any) {
     const { redirect, path } = item;

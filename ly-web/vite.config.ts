@@ -4,8 +4,6 @@ import path from "path";
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 
-const prefix = `monaco-editor/esm/vs`;
-
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
@@ -43,36 +41,17 @@ export default defineConfig(({ mode, command }) => {
         }
       }
     },
-
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            jsonWorker: [`${prefix}/language/json/json.worker`],
-            cssWorker: [`${prefix}/language/css/css.worker`],
-            htmlWorker: [`${prefix}/language/html/html.worker`],
-            tsWorker: [`${prefix}/language/typescript/ts.worker`],
-            editorWorker: [`${prefix}/editor/editor.worker`],
+          manualChunks(id) {
+            if (id.includes('element-plus/theme')) {
+              return 'ele';
+            }
           },
         },
       },
     },
-    css: {
-      postcss: {
-        plugins: [
-          {
-            postcssPlugin: 'internal:charset-removal',
-            AtRule: {
-              charset: (atRule) => {
-                if (atRule.name === 'charset') {
-                  atRule.remove();
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
   }
 })
 

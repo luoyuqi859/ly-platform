@@ -11,12 +11,23 @@
             <el-table-column label="状态" prop="status" />
             <el-table-column label="所有者" prop="owner" />
             <el-table-column label="操作" width="230" class-name="fixed-width">
+                <template #default="scope">
+                    <el-tooltip content="投屏" placement="top">
+                        <el-button link type="primary" icon="View" @click="projectionScreen(scope)">投屏</el-button>
+                    </el-tooltip>
+                    <el-tooltip content="性能测试" placement="top">
+                        <el-button link type="danger" icon="Key" :loading="scope.row.loading" :disabled="scope.row.disabled"
+                            @click="performanceTest(scope)">性能测试</el-button>
+                    </el-tooltip>
+                </template>
+            </el-table-column>
+            <!-- <el-table-column label="操作" width="230" class-name="fixed-width">
                 <template #default="{ row, $index }">
                     <el-button type="primary" size="small" @click="projectionScreen(row)">
                         投屏
                     </el-button>
                 </template>
-            </el-table-column>
+            </el-table-column> -->
         </el-table>
 
         <pagination v-show="total > 0" :total="total" v-model:page="queryParams.Page" v-model:limit="queryParams.PageSize"
@@ -39,6 +50,17 @@ const queryParams = ref({
     PageSize: 10,
 })
 
+const performanceTest = (scope: any) => {
+    console.log(scope)
+    router.push({
+        path: `/device/performance`,
+        query:{
+            owner: scope.row.owner
+        }
+    })
+
+}
+
 
 const getDevices= () => {
     getDeviceList(queryParams.value).then(res => {
@@ -48,12 +70,12 @@ const getDevices= () => {
     })
 }
 
-const projectionScreen = (row:any)=>{
-    console.log(row)
+const projectionScreen = (scope:any)=>{
+
     router.push({
         path: `/device/minicap`,
         query:{
-            owner: row.owner
+            owner: scope.row.owner
         }
     })
 }

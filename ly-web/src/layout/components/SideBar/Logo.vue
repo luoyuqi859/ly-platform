@@ -55,7 +55,7 @@ defineProps({
   },
 });
 
-const title = ref('PyAuto测试管理平台');
+const title = ref('PyAuto测试平台');
 const settingsStore = useSettingsStore();
 const sideTheme = computed(() => settingsStore.sideTheme);
 </script>

@@ -18,6 +18,8 @@ import elementIcons from '@/components/SvgIcon/svgicon';
 import router from './router'
 import store from './store';
 
+import plugins from './plugins'; // plugins
+
 
 // 分页组件
 import Pagination from '@/components/Pagination/index.vue';
@@ -62,7 +64,7 @@ const app = createApp(App)
 app.component('Pagination', Pagination);
 app.use(VueMonacoEditorPlugin)
 
-
+app.use(plugins);
 
 // element plus组件
 // app.use(ElementPlus, { locale: locale})

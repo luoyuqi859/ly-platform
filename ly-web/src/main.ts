@@ -19,6 +19,8 @@ import router from './router'
 import store from './store';
 
 import plugins from './plugins'; // plugins
+// import './permission'; // permission control
+
 
 
 // 分页组件
@@ -35,23 +37,23 @@ import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
 
 
 self.MonacoEnvironment = {
-    getWorker(_, label) {
-      if (label === "json") {
-        return new jsonWorker()
-      }
-      if (label === "css" || label === "scss" || label === "less") {
-        return new cssWorker()
-      }
-      if (label === "html" || label === "handlebars" || label === "razor") {
-        return new htmlWorker()
-      }
-      if (label === "typescript" || label === "javascript") {
-        return new tsWorker()
-      }
-      return new editorWorker()
+  getWorker(_, label) {
+    if (label === "json") {
+      return new jsonWorker()
     }
+    if (label === "css" || label === "scss" || label === "less") {
+      return new cssWorker()
+    }
+    if (label === "html" || label === "handlebars" || label === "razor") {
+      return new htmlWorker()
+    }
+    if (label === "typescript" || label === "javascript") {
+      return new tsWorker()
+    }
+    return new editorWorker()
   }
-  
+}
+
 loader.config({ monaco })
 
 
@@ -73,9 +75,9 @@ app.use(elementIcons)
 const size = String(Cookies.get('size')) || 'default'; // 将返回值转换为字符串类型
 // 使用element-plus 并且设置全局的大小
 app.use(ElementPlus, {
-    locale: locale,
-    // 支持 large、default、small
-    size: size === 'large' || size === 'small' ? size : 'default', // 只接受参数 medium、small 和 mini
+  locale: locale,
+  // 支持 large、default、small
+  size: size === 'large' || size === 'small' ? size : 'default', // 只接受参数 medium、small 和 mini
 });
 
 

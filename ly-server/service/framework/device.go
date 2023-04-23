@@ -36,3 +36,12 @@ func (deviceService *DeviceService) GetDeviceList(info request.PageInfo) (list i
 	err = db.Limit(limit).Offset(offset).Find(&deviceList).Error
 	return deviceList, total, err
 }
+
+
+//@description: 通过用户ID获取所属设备
+func (deviceService *DeviceService) GetDevicesByUserID(id int) ([]framework.Device, error) {
+	var devices []framework.Device
+	err := global.DB.Where("owner = ?", id).Find(&devices).Error
+	return devices, err
+}
+

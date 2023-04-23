@@ -1,35 +1,4 @@
 <template>
-  <!-- <div class="login-wrap">
-    <div class="welcome-title">
-      <img class="logoimg" src="../../assets/img/logo.png">
-      <span>欢 迎 使 用 测 试 平 台</span>
-    </div>
-    <el-form label-position="left" :model="loginFormData" :rules="rules" ref="loginForm" label-width="0px"
-      class="login-container">
-      <h3 class="title">用户登录</h3>
-      <el-form-item prop="account">
-        <el-input type="text" id="username" v-model="loginFormData.username" placeholder="账号"></el-input>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input type="password" id="password" v-model="loginFormData.password"
-           placeholder="密码"></el-input>
-      </el-form-item>
-      <el-row>
-        <el-col :span="8">
-          <el-checkbox v-model="loginForm.rememberMe" style="margin: 0px 0px 25px 0px"
-                >记住密码</el-checkbox
-            >
-        </el-col>
-        <el-col :span="16">
-          <el-button type="primary" style="float:right;text-align: right">立即注册</el-button>
-        </el-col>
-      </el-row>
-      <el-form-item style="width:100%; margin-top:20px">
-        <el-button type="primary" id="login" style="width:100%;" @click="submitForm">登录</el-button>
-      </el-form-item>
-    </el-form>
-
-  </div> -->
   <div class="login">
     <el-form ref="loginRef" :model="loginForm" :rules="loginRules" class="login-form">
       <h3 class="title">PyAuto测试平台</h3>
@@ -75,7 +44,8 @@ const userStore = useUserStore();
 const router = useRouter();
 const loginRef = ref<FormInstance>();
 const loading = ref(false);
-const register = ref(false);
+const register = ref(true);
+const redirect = ref(undefined);
 const loginForm = ref<any>({
   username: 'admin',
   password: 'admin',
@@ -114,7 +84,7 @@ const handleLogin = () => {
       userStore
         .login(loginForm.value)
         .then(() => {
-          router.push({ path: '/home/dashboard' });
+          router.push({ path: redirect.value || '/index' });
         })
         .catch(() => {
           loading.value = false;

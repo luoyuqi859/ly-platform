@@ -1,11 +1,7 @@
 <template>
     <div class="navbar">
-        <Hamburger
-            id="hamburger-container"
-            :is-active="appStore.sidebar.opened"
-            class="hamburger-container"
-            @toggleClick="toggleSideBar"
-        />
+        <Hamburger id="hamburger-container" :is-active="appStore.sidebar.opened" class="hamburger-container"
+            @toggleClick="toggleSideBar" />
         <Breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!settingsStore.topNav" />
 
         <div class="right-menu">
@@ -25,12 +21,9 @@
                     </div>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <router-link to="">
+                            <router-link to="/user/profile">
                                 <el-dropdown-item>个人中心</el-dropdown-item>
                             </router-link>
-                            <el-dropdown-item command="setLayout">
-                                <span>布局设置</span>
-                            </el-dropdown-item>
                             <el-dropdown-item divided command="logout">
                                 <span>退出登录</span>
                             </el-dropdown-item>
@@ -51,6 +44,7 @@ import SizeSelect from '@/components/SizeSelect/index.vue';
 import useAppStore from '@/store/modules/app';
 import useUserStore from '@/store/modules/user';
 import useSettingsStore from '@/store/modules/settings';
+
 
 
 const appStore = useAppStore();
@@ -82,10 +76,10 @@ function logout() {
     })
         .then(() => {
             userStore.logOut().then(() => {
-                location.href = '/index';
+                location.href = '/login';
             });
         })
-        // .catch(() => {});
+    // .catch(() => {});
 }
 
 const emits = defineEmits(['setLayout']);

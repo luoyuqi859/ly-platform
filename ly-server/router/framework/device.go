@@ -18,5 +18,7 @@ func (r *DeviceRouter) InitDeviceRouter(Router *gin.RouterGroup) {
 	}
 	{
 		DeviceRouterWithoutRecord.POST("list", DeviceApi.GetDeviceList) 
+		DeviceRouterWithoutRecord.POST("getDevicesByUserID", DeviceApi.GetDevicesByUserID)   // 根据用户id获取host
+
 	}
 }

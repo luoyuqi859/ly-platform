@@ -55,7 +55,10 @@ const performanceTest = (scope: any) => {
     router.push({
         path: `/device/performance`,
         query:{
-            owner: scope.row.owner
+            owner: scope.row.owner,
+            serial:scope.row.serial,
+            brand:scope.row.brand,
+            platform:scope.row.platform,
         }
     })
 
@@ -71,11 +74,13 @@ const getDevices= () => {
 }
 
 const projectionScreen = (scope:any)=>{
+    console.log(scope)
 
     router.push({
-        path: `/device/minicap`,
+        path: `/device/projectionScreen`,
         query:{
-            owner: scope.row.owner
+            owner: scope.row.owner,
+            serial:scope.row.serial
         }
     })
 }

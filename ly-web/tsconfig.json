@@ -43,6 +43,12 @@
       "ScriptHost"
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","test.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "ts-node": {
+      "compilerOptions": {
+          "module": "CommonJS",
+          "esModuleInterop": true
+      }
+  }
 }

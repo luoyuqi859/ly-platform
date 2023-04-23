@@ -17,3 +17,21 @@ export const getHostByUserId = (data: any) => {
         data: data
     })
 }
+
+// @Summary 执行机状态变更
+export const hostStatusModify = (data: any) => {
+    return service({
+        url: '/host/status/modify',
+        method: 'post',
+        data: data
+    })
+}
+
+// @Summary 获取执行机状态
+export const getHostStatus = (data: any) => {
+    return service({
+        url: '/host/getHostStatus',
+        method: 'post',
+        data: data
+    })
+}

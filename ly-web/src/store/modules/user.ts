@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import defAva from '@/assets/images/profile.jpg'
-import { login, logout } from '@/api/user';
+import { getUserInfo, login, logout } from '@/api/user';
 import { getToken, removeToken, setToken } from '@/utils/auth';
 
 
@@ -32,6 +32,33 @@ const useUserStore = defineStore('user', {
                     reject(error)
                 })
             })
+        },
+        // 获取用户信息
+        getInfo() {
+            return new Promise((resolve, reject) => {
+                getUserInfo()
+                    .then((res: any) => {
+                        const user = res.data.userInfo;
+                        const avatar =
+                            user.avatar === '' || user.avatar == null
+                                ? defAva
+                                : import.meta.env.VITE_APP_BASE_API + user.avatar;
+
+                        // if (res.roles && res.roles.length > 0) {
+                        //     // 验证返回的roles是否是一个非空数组
+                        //     this.roles = res.roles;
+                        //     this.permissions = res.permissions;
+                        // } else {
+                        //     this.roles = ['ROLE_DEFAULT'];
+                        // }
+                        this.name = user.userName;
+                        this.avatar = avatar;
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
         },
         // 退出系统
         logOut() {

@@ -17,4 +17,5 @@ type HostRegister struct{
 	Category string    `json:"category"`
 	Platform string    `json:"platform"`
 	Repo     string    `json:"repo"`
+	Status   string    `json:"status"`
 }

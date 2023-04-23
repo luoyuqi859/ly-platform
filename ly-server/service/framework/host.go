@@ -19,6 +19,19 @@ func (HostService *HostService) Register(d framework.Host) (HostInter framework.
 		host.Category = d.Category
 		host.Repo = d.Repo
 		host.Owner = d.Owner
+		host.Status = d.Status
+		err = global.DB.Save(&host).Error
+		return host, err
+	}
+	d.UUID = uuid.NewV4()
+	err = global.DB.Create(&d).Error
+	return d, err
+}
+
+func (HostService *HostService) StatusModify(d framework.Host) (HostInter framework.Host, err error) {
+	var host framework.Host
+	if !errors.Is(global.DB.Where("ip = ? AND port = ?", d.Ip, d.Port).First(&host).Error, gorm.ErrRecordNotFound) {
+		host.Status = d.Status
 		err = global.DB.Save(&host).Error
 		return host, err
 	}
@@ -45,5 +58,12 @@ func (hostService *HostService) GetHostList(info request.PageInfo) (list interfa
 func (hostService *HostService) GetHostByUserID(id int) (HostInter framework.Host, err error) {
 	var host framework.Host
 	err = global.DB.Where("owner = ?", id).First(&host).Error
+	return host, err
+}
+
+//@description: 获取host状态
+func (hostService *HostService) GetHostStatus(ip string, port string) (HostInter framework.Host, err error) {
+	var host framework.Host
+	err = global.DB.Where("ip = ? AND port = ?", ip, port).First(&host).Error
 	return host, err
 }

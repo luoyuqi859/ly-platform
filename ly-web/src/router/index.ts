@@ -1,8 +1,40 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import Layout from '@/layout/index.vue'
 
-export const routes: Array<RouteRecordRaw> = [
+
+
+declare module 'vue-router' {
+    interface RouteMeta {
+        hidden?: boolean;
+        title?: string;
+        icon?: string;
+        elSvgIcon?: string;
+        permissions?: string[]
+    }
+    interface _RouteRecordBase {
+        hidden?: boolean;
+        parentPath?: string;
+        permissions?: string[]
+
+    }
+    interface _RouteLocationBase {
+        title?: string;
+    }
+}
+
+export const routes: RouteRecordRaw[] = [
+    {
+        path: '/redirect',
+        component: Layout,
+        hidden: true,
+        children: [
+            {
+                path: '/redirect/:path(.*)',
+                component: () => import('@/views/redirect/index.vue'),
+            },
+        ],
+    },
     {
         path: "/",
         redirect: '/login'
@@ -11,18 +43,48 @@ export const routes: Array<RouteRecordRaw> = [
         path: '/login',
         name: 'Login',
         component: () => import("@/views/login/index.vue"),
+        hidden: true,
     },
     {
-        path: '/home',
+        path: '/register',
+        component: () => import("@/views/register/index.vue"),
+        hidden: true,
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/error/404.vue'),
+        hidden: true,
+    },
+    {
+        path: '/401',
+        component: () => import('@/views/error/401.vue'),
+        hidden: true,
+    },
+    {
+        path: '',
         component: Layout,
         children: [
             {
-                path: 'dashboard',
-                name: 'Dashboard',
+                path: '/index',
+                name: 'Index',
                 component: () => import('@/views/home/index.vue'),
-                meta: { title: '仪表面板', icon: 'dashboard' },
+                meta: { title: '首页', icon: 'dashboard', affix: true },
             }
         ]
+    },
+    {
+        path: '/user',
+        component: Layout,
+        hidden: true,
+        redirect: 'noredirect',
+        children: [
+            {
+                path: 'profile',
+                component: () => import('@/views/user/profile/index.vue'),
+                name: 'Profile',
+                meta: { title: '个人中心', icon: 'user' },
+            },
+        ],
     },
     {
         path: '/host',
@@ -42,6 +104,15 @@ export const routes: Array<RouteRecordRaw> = [
                 path: 'config',
                 name: 'Config',
                 component: () => import('@/views/host/viewConfig.vue'),
+                hidden: true,
+                meta: { title: '配置文件' },
+            },
+            {
+                path: 'executeStep',
+                name: 'ExecuteStep',
+                component: () => import('@/views/host/executeStep.vue'),
+                hidden: true,
+                meta: { title: 'PyAuto用例执行' },
             },
         ]
     },
@@ -63,98 +134,33 @@ export const routes: Array<RouteRecordRaw> = [
                 path: 'performance',
                 name: 'Performance',
                 component: () => import('@/views/device/performance.vue'),
+                hidden: true,
+                meta: { title: '性能测试' },
+            },
+            {
+                path: 'projectionScreen',
+                name: 'ProjectionScreen',
+                component: () => import('@/views/device/projectionScreen.vue'),
+                hidden: true,
+                meta: { title: '投屏' },
             },
         ]
     },
-    {
-        path: '/task',
-        component: Layout,
-        name: 'Task',
-        meta: { title: '任务管理', icon: 'documentation' },
-    },
-
-    // {
-    //     path: "/layout",
-    //     name: 'Layout',
-    //     component: () => import("@/layout/index.vue"),
-    //     children: [
-    //         {
-    //             path: '/home',
-    //             name: 'Home',
-    //             component: () => import("@/views/home/index.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"首页",
-    //                 icon: 'home'
-    //             }
-    //         },
-    //         {
-    //             path: '/user/list',
-    //             name: 'User-List',
-    //             component: () => import("@/views/system/user/index.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"用户列表",
-    //                 icon: 'user'
-    //             }
-    //         },
-    //         {
-    //             path: '/device/list',
-    //             name: 'Device-List',
-    //             component: () => import("@/views/device/deviceList.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"设备列表",
-    //                 icon: 'user'
-    //             }
-    //         },
-    //         {
-    //             path: '/device/minicap',
-    //             name: 'Device-Minicap',
-    //             component: () => import("@/views/device/minicap.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"xxx",
-    //                 icon: 'user'
-    //             }
-    //         },
-    //         {
-    //             path: '/host/list',
-    //             name: 'Host-List',
-    //             component: () => import("@/views/host/hostList.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"主机列表",
-    //                 icon: 'dashboard',
-    //             }
-    //         },
-    //         {
-    //             path: '/ide',
-    //             name: 'Ide',
-    //             component: () => import("@/views/ide/index.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"IDE"
-    //             }
-    //         },
-    //         {
-    //             path: '/task/list',
-    //             name: 'Task-List',
-    //             component: () => import("@/views/task/taskList.vue"),
-    //             meta: {
-    //                 requireAuth: true,
-    //                 title:"任务列表",
-    //                 icon: 'user'
-    //             }
-    //         }
-    //     ]
-    // },
 
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
+    history: createWebHistory(),
+    routes: routes,
+    // 用于控制页面切换时滚动条的位置。如果从之前的页面返回到当前页面时保存了滚动条位置，则恢复该位置；否则，将滚动条位置设置为顶部
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { top: 0 };
+        }
+    },
 });
+
 
 export default router;

@@ -63,3 +63,26 @@ func (d *DeviceApi) GetDeviceList(c *gin.Context) {
 		PageSize: pageInfo.PageSize,
 	}, "获取成功", c)
 }
+
+// @Summary   通过用户ID获取设备列表
+func (d *DeviceApi) GetDevicesByUserID(c *gin.Context) {
+	var idInfo request.GetById
+	err := c.ShouldBind(&idInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(idInfo, utils.IdVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	devices, err := deviceService.GetDevicesByUserID(idInfo.ID)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"deviceList": devices}, "获取成功", c)
+}
+

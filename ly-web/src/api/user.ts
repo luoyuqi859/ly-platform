@@ -15,7 +15,7 @@ export const login = (data: any) => {
 // @Summary 用户注册
 export const register = (data: any) => {
     return service({
-        url: '/user/register',
+        url: '/base/register',
         headers: {
             isToken: false
         },
@@ -27,7 +27,7 @@ export const register = (data: any) => {
 // @Summary 用户退出
 export const logout = () => {
     return service({
-        url: '/user/logout',
+        url: '/base/logout',
         method: 'post',
     })
 }
@@ -41,7 +41,7 @@ export const setUserInfo = (data: any) => {
     })
 }
 
-// @Summary 获取用户信息
+// @Summary 获取用户列表
 export const getUserList = (data: any) => {
     return service({
         url: '/user/list',
@@ -56,4 +56,22 @@ export const getUserInfo = () => {
         url: '/user/info',
         method: 'get'
     })
+}
+
+// @Summary 修改密码
+export const updateUserPwd = (data: any) => {
+    return service({
+        url: '/user/changePassword',
+        method: 'post',
+        data: data
+    })
+}
+
+// 用户头像上传
+export function uploadAvatar(data: any) {
+    return service({
+        url: '/user/profile/avatar',
+        method: 'post',
+        data: data,
+    });
 }

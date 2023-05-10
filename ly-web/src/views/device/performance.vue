@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { getHostByUserId } from '@/api/host';
+import { getHostByHostID, getHostByUserId } from '@/api/host';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import phone from '@/assets/images/phone.png';
@@ -62,6 +62,7 @@ const route = useRoute()
 const owner = ref(route.query.owner)
 const brand = ref(route.query.brand)
 const platform = ref(route.query.platform)
+const hostid = ref(route.query.host)
 
 const monitorTypes = ref(["cpu", "memory", "fps", "gpu", "devicebatterylevel", "devicebatterytemperature"],)
 
@@ -72,14 +73,14 @@ const serial: any = ref("")
 
 
 
-const getOwnHost = () => {
-    const id = parseInt(owner.value as string, 10);
-    getHostByUserId({ ID: id }).then((res: any) => {
-        ip.value = res.data.hostInfo.ip
-        port.value = res.data.hostInfo.port
-        serial.value = route.query.serial
-        isLoaded.value = true;
-    })
+const getOwnHost = async() => {
+    const id = parseInt(hostid.value as string, 10);
+    const res = await getHostByHostID({ host: id })
+    console.log("xx",res)
+    ip.value = res.data.hostInfo.ip
+    port.value = res.data.hostInfo.port
+    serial.value = route.query.serial
+    isLoaded.value = true;
 
 }
 

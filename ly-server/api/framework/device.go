@@ -27,8 +27,8 @@ func (d *DeviceApi) Register(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	id :=utils.GetUserID(c)
-	device := &framework.Device{Name: r.Name, Serial: r.Serial, Brand: r.Brand, Model: r.Model, Platform: r.Platform, PlatformVersion: r.PlatformVersion, Owner: id}
+	id := utils.GetUserID(c)
+	device := &framework.Device{Name: r.Name, Serial: r.Serial, Brand: r.Brand, Model: r.Model, Platform: r.Platform, PlatformVersion: r.PlatformVersion, Owner: id,Host: r.Host}
 	deviceReturn, err := deviceService.Register(*device)
 	if err != nil {
 		global.LOG.Error("注册失败!", zap.Error(err))
@@ -85,4 +85,3 @@ func (d *DeviceApi) GetDevicesByUserID(c *gin.Context) {
 	}
 	response.OkWithDetailed(gin.H{"deviceList": devices}, "获取成功", c)
 }
-

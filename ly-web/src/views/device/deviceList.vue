@@ -3,21 +3,20 @@
         <!-- 表格数据 -->
         <el-table v-loading="loading" :data="deviceList">
             <el-table-column label="名称" prop="name" />
-            <el-table-column label="序列号" prop="serial"/>
-            <el-table-column label="品牌" prop="brand"/>
+            <el-table-column label="序列号" prop="serial" />
+            <el-table-column label="品牌" prop="brand" />
             <el-table-column label="型号" prop="model" />
             <el-table-column label="平台" prop="platform" />
             <el-table-column label="平台版本" prop="platformVersion" />
             <el-table-column label="状态" prop="status" />
-            <el-table-column label="所有者" prop="owner" />
             <el-table-column label="操作" width="230" class-name="fixed-width">
-                <template #default="scope">
+                <template #default="scope: any ">
                     <el-tooltip content="投屏" placement="top">
-                        <el-button link type="primary" icon="View" @click="projectionScreen(scope)">投屏</el-button>
+                        <el-button link type="primary" icon="View" @click=" projectionScreen(scope) ">投屏</el-button>
                     </el-tooltip>
                     <el-tooltip content="性能测试" placement="top">
-                        <el-button link type="danger" icon="Key" :loading="scope.row.loading" :disabled="scope.row.disabled"
-                            @click="performanceTest(scope)">性能测试</el-button>
+                        <el-button link type="danger" icon="Key" :loading=" scope.row.loading " :disabled=" scope.row.disabled "
+                            @click=" performanceTest(scope) ">性能测试</el-button>
                     </el-tooltip>
                 </template>
             </el-table-column>
@@ -30,8 +29,8 @@
             </el-table-column> -->
         </el-table>
 
-        <pagination v-show="total > 0" :total="total" v-model:page="queryParams.Page" v-model:limit="queryParams.PageSize"
-            @pagination="getDevices" />
+        <pagination v-show=" total > 0 " :total=" total " v-model:page=" queryParams.Page " v-model:limit=" queryParams.PageSize "
+            @pagination=" getDevices " />
     </div>
 </template>
 
@@ -54,18 +53,19 @@ const performanceTest = (scope: any) => {
     console.log(scope)
     router.push({
         path: `/device/performance`,
-        query:{
+        query: {
             owner: scope.row.owner,
-            serial:scope.row.serial,
-            brand:scope.row.brand,
-            platform:scope.row.platform,
+            serial: scope.row.serial,
+            brand: scope.row.brand,
+            platform: scope.row.platform,
+            host: scope.row.host
         }
     })
 
 }
 
 
-const getDevices= () => {
+const getDevices = () => {
     getDeviceList(queryParams.value).then(res => {
         deviceList.value = res.data.list
         total.value = res.data.total
@@ -73,14 +73,14 @@ const getDevices= () => {
     })
 }
 
-const projectionScreen = (scope:any)=>{
+const projectionScreen = (scope: any) => {
     console.log(scope)
 
     router.push({
         path: `/device/projectionScreen`,
-        query:{
+        query: {
             owner: scope.row.owner,
-            serial:scope.row.serial
+            serial: scope.row.serial
         }
     })
 }

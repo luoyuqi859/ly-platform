@@ -9,10 +9,27 @@ export const getHostList = (data: any) => {
     })
 }
 
+export const checkHostPermission = (data: any) => {
+    return service({
+        url: '/host/checkHostPermission',
+        method: 'post',
+        data: data
+    })
+}
+
 // @Summary 根据用户id获取主机
 export const getHostByUserId = (data: any) => {
     return service({
         url: '/host/getHostByUserID',
+        method: 'post',
+        data: data
+    })
+}
+
+// @Summary 根据host id获取主机
+export const getHostByHostID = (data: any) => {
+    return service({
+        url: '/host/getHostByHostID',
         method: 'post',
         data: data
     })

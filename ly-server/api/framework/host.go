@@ -57,6 +57,40 @@ func (h *HostApi) StatusModify(c *gin.Context) {
 	response.OkWithDetailed(frameworkRes.HostResponse{Host: hostReturn}, "执行机状态变更成功", c)
 }
 
+func (h *HostApi) CheckHostPermission(c *gin.Context) {
+	var r frameworkReq.GetByHostId
+	err := c.ShouldBind(&r)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	userID := utils.GetUserID(c)
+	hasPermission := hostService.CheckHostPermission(userID, uint(r.Host))
+	if !hasPermission {
+		response.OkWithDetailed(gin.H{"canControl": "0"}, "获取成功", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"canControl": "1"}, "获取成功", c)
+}
+
+func (h *HostApi) CreateHostPermission(c *gin.Context) {
+	var r frameworkReq.GetByHostId
+	err := c.ShouldBind(&r)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	userID := utils.GetUserID(c)
+	host := &framework.HostPermission{UserID: userID, HostID: uint(r.Host), Approved: true}
+	hostReturn, err := hostService.CreateOrUpdateHostPermission(*host)
+	if err != nil {
+		global.LOG.Error("状态变更失败!", zap.Error(err))
+		response.Fail(c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"host": hostReturn}, "获取成功", c)
+}
+
 func (h *HostApi) GetHostList(c *gin.Context) {
 	var pageInfo request.PageInfo
 	err := c.ShouldBind(&pageInfo)
@@ -97,6 +131,28 @@ func (h *HostApi) GetHostByUserID(c *gin.Context) {
 		return
 	}
 	ReqHost, err := hostService.GetHostByUserID(idInfo.ID)
+	if err != nil {
+		global.LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"hostInfo": ReqHost}, "获取成功", c)
+}
+
+// @Summary   获取host通过host_id
+func (h *HostApi) GetHostByHostID(c *gin.Context) {
+	var idInfo frameworkReq.GetByHostId
+	err := c.ShouldBind(&idInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(idInfo, utils.IdVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	ReqHost, err := hostService.GetHostByHostID(idInfo.Host)
 	if err != nil {
 		global.LOG.Error("获取失败!", zap.Error(err))
 		response.FailWithMessage("获取失败", c)

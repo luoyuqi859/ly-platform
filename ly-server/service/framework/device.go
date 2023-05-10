@@ -16,6 +16,7 @@ func (DeviceService *DeviceService) Register(d framework.Device) (DeviceInter fr
 	var device framework.Device
 	if !errors.Is(global.DB.Where("serial = ?", d.Serial).First(&device).Error, gorm.ErrRecordNotFound) { 
 		device.Owner = d.Owner
+		device.Host = d.Host
 		err = global.DB.Save(&device).Error
 		return device, err
 	}

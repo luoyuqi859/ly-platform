@@ -41,7 +41,7 @@
                 <el-card>
                     <template #header>
                         <div class="clearfix">
-                            <span>基本资料</span>
+                            <span>个人管理</span>
                         </div>
                     </template>
                     <el-tabs v-model="activeTab">
@@ -50,6 +50,9 @@
                         </el-tab-pane>
                         <el-tab-pane label="修改密码" name="resetPwd">
                             <resetPwd />
+                        </el-tab-pane>
+                        <el-tab-pane label="主机权限管理" name="host">
+                            <hostManager />
                         </el-tab-pane>
                     </el-tabs>
                 </el-card>
@@ -62,11 +65,11 @@
 
 
 import { ref, reactive } from 'vue';
-import useUserStore from '@/store/modules/user';
 import { getUserInfo } from '@/api/user';
 import resetPwd from './resetPwd.vue';
 import userInfo from './userInfo.vue';
 import userAvatar from './userAvatar.vue';
+import hostManager from './hostManager.vue';
 
 
 const activeTab = ref('userinfo');

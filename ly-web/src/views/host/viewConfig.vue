@@ -1,6 +1,10 @@
 <template>
   <div class="app-container">
-    <el-card class="container">
+    <section class="usage">
+      <h2 class="usage-title">使用说明：</h2>
+      <p class="usage-content">手动点击上方数字阶段<br>执行机配置文件，执行前请详细检查配置文件参数，点击保存会同时修改本地主机配置文件</p>
+    </section>
+    <el-card>
       <div class="card-header">
         <div class="left-section">
           <h2 class="card-title">配置文件</h2>
@@ -63,6 +67,23 @@ getYaml();
 
 
 <style lang="scss" scoped>
+.usage {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.usage-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.usage-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -121,16 +142,6 @@ getYaml();
   }
 }
 
-.container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  /* 添加外边距 */
-}
-
 .editor-container {
   margin-top: 10px;
   overflow: hidden;
@@ -152,6 +163,10 @@ getYaml();
   .container {
     width: 100%;
     padding: 0 20px;
+  }
+
+  .usage {
+    margin-bottom: 10px;
   }
 
   .card-header {

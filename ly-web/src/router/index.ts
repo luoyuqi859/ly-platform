@@ -112,7 +112,7 @@ export const routes: RouteRecordRaw[] = [
                 name: 'ExecuteStep',
                 component: () => import('@/views/host/executeStep.vue'),
                 hidden: true,
-                meta: { title: 'PyAuto用例执行' },
+                meta: { title: 'PyAuto执行机' },
             },
         ]
     },

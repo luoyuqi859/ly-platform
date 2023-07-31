@@ -13,6 +13,22 @@
           <template #prefix><svg-icon icon-class="password" class="el-input__icon input-icon" /></template>
         </el-input>
       </el-form-item>
+      <el-form-item class="login-animation3">
+      <el-col :span="15">
+        <el-input text maxlength="4" placeholder="请输入验证码"  v-model="loginForm.code" clearable
+                  autocomplete="off">
+          <template #prefix>
+            <el-icon class="el-input__icon">
+              <ele-Position/>
+            </el-icon>
+          </template>
+        </el-input>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-col :span="8">
+        <el-button class="login-content-code" v-waves>1234</el-button>
+      </el-col>
+    </el-form-item>
       <el-checkbox v-model="loginForm.rememberMe" style="margin: 0px 0px 25px 0px">记住密码</el-checkbox>
       <el-form-item style="width: 100%">
         <el-button :loading="loading" size="large" type="primary" style="width: 100%" @click.prevent="handleLogin">
@@ -50,6 +66,7 @@ const loginForm = ref<any>({
   username: 'admin',
   password: 'admin',
   rememberMe: false,
+  code:1234,
 });
 
 
@@ -165,4 +182,10 @@ const handleLogin = () => {
   height: 40px;
   padding-left: 12px;
 }
+.login-content-code {
+    width: 100%;
+    padding: 0;
+    font-weight: bold;
+    letter-spacing: 5px;
+  }
 </style>

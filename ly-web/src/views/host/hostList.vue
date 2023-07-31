@@ -1,5 +1,6 @@
 <template>
     <div class="app-container">
+        <el-card class="index-card">
         <!-- 表格数据 -->
         <el-table v-loading="loading" :data="hostList">
             <el-table-column label="名称" prop="name" />
@@ -19,8 +20,7 @@
             <el-table-column label="操作" width="230" class-name="fixed-width">
                 <template #default=" scope: any ">
                     <el-tooltip content="测试执行" placement="top">
-                        <el-button link type="danger" icon="Key"
-                            :disabled=" scope.row.status != '在线'"
+                        <el-button link type="danger" icon="Key" :disabled=" scope.row.status != '在线' "
                             @click=" executeStep(scope) ">
                             测试执行
                         </el-button>
@@ -30,8 +30,11 @@
             </el-table-column>
         </el-table>
 
+        </el-card>
         <pagination v-show=" total > 0 " :total=" total " v-model:page=" queryParams.Page "
             v-model:limit=" queryParams.PageSize " @pagination=" getHosts " />
+
+
     </div>
 </template>
 
@@ -128,4 +131,8 @@ onUnmounted(() => clearInterval(timer));
 getHosts()
 
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.index-card {
+    border-radius: 10px;
+}
+</style>

@@ -37,7 +37,7 @@ export const routes: RouteRecordRaw[] = [
     },
     {
         path: "/",
-        redirect: '/login'
+        redirect: '/login',
     },
     {
         path: '/login',
